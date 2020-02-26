@@ -70,3 +70,7 @@ Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
 
 ~~this~~
+
+### Links
+[github markdown](https://guides.github.com/features/mastering-markdown/)
+[available emojis](https://www.webfx.com/tools/emoji-cheat-sheet/)
