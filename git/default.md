@@ -72,5 +72,6 @@ Content in the first column | Content in the second column
 ~~this~~
 
 ### Links
-[github markdown](https://guides.github.com/features/mastering-markdown/)
+[github markdown](https://guides.github.com/features/mastering-markdown/) 
+<br>
 [available emojis](https://www.webfx.com/tools/emoji-cheat-sheet/)
