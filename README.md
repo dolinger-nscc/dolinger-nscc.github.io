@@ -10,7 +10,4 @@ The topics that will presented on this site will primarily pertain to:
 - Analysis
 
 ### Contact Me
-patrick.dolinger@nscc.ca
-
-
-
+[patrick.dolinger@nscc.ca](mailto:patrick.dolinger@nscc.ca)
