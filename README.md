@@ -1,12 +1,15 @@
-# This is a test page written in Markdown and will be posted as .md file
-When a page is written using markdown and saved as .md file it will be rendered as an html file. 
-
-## Differences within github pages
-Experiment with the following:
-- Add a new directory to your site (call it test)
-- Add a file (this one) to the directory with a .md extension
-- Add a file(in my case - the html version of this file) to the same directory
-- Open a browser and observe the differences when calling the files
+# Welcome!
+This is my *github pages* landing page. I put it up to share some of the code snippets with my students. I teach in the [Business Intelligence Analytics](https://www.nscc.ca/learning_programs/programs/plandescr.aspx?prg=BZIA&pln=BZNTELADV) program at [NSCC](https://www.nscc.ca/).
+ 
+## Courses
+I teach courses in the following areas:
+- SQL (Structured Query Language)
+- Database Design
+- Data Warehouse Design and Implementation
+- ETL (Extract, Transform, and Load) as pertains to data warehousing
+- Reporting
+- OLAP Analysis
+- Statistical Learning
 
 ## Contact Me
 [patrick.dolinger@nscc.ca](mailto:patrick.dolinger@nscc.ca)
