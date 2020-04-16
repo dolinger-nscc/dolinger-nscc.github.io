@@ -17,9 +17,9 @@ This report makes the following assumptions and may change from time to time dur
 ## Contact Me
 [patrick.dolinger@nscc.ca](mailto:patrick.dolinger@nscc.ca)
 
-  \n
-  \n
-  \n
+  
+  
+  
   
 | -------------
 [Refresh](https://dolinger-nscc.github.io/rpt/) | [Next](https://dolinger-nscc.github.io/rpt/rpt1.html)

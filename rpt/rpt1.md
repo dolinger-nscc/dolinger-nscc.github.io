@@ -5,11 +5,11 @@ The bullet chart (Daily Confirmed Cases Since 1 Mar) gives a trend visualisation
 <br>
 <div class="flourish-embed flourish-table" data-src="visualisation/1937579" data-url="https://flo.uri.sh/visualisation/1937579/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
-  \n
-  \n
-  \n
+  
+  
+  
   
 
 | -------------
-[Refresh](https://dolinger-nscc.github.io/rpt/) | [Next](https://dolinger-nscc.github.io/rpt/rpt1.html)
+[Back](https://dolinger-nscc.github.io/rpt/) | [Next](https://dolinger-nscc.github.io/rpt/rpt1.html)
 ------------ |
