@@ -6,8 +6,9 @@ Some outliers have been truncated from the view for sizing reasons.
 The numbers are updated as to the "as of" date on the graph.
 
 <br>
+<center>
 <div class="flourish-embed flourish-scatter" data-src="visualisation/1951679" data-url="https://flo.uri.sh/visualisation/1951679/embed" data-width="85%"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-
+</center>
 | -------------
 [Back](https://dolinger-nscc.github.io/rpt/rpt3.html) | [Next](https://dolinger-nscc.github.io/rpt/rpt5.html)
 ------------ |
