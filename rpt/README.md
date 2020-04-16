@@ -16,3 +16,7 @@ This report makes the following assumptions and may change from time to time dur
 
 ## Contact Me
 [patrick.dolinger@nscc.ca](mailto:patrick.dolinger@nscc.ca)
+
+Back | Next
+------------ | -------------
+Link Back | Link Next
