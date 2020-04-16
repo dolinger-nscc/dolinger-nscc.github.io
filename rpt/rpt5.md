@@ -12,7 +12,7 @@ Some outliers have been truncated from the view for sizing reasons.
 
 <br>
 <center>
-<div class="flourish-embed flourish-scatter" data-src="visualisation/1960765" data-url="https://flo.uri.sh/visualisation/1960765/embed" data-width="85px"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+<div class="flourish-embed flourish-scatter" data-src="visualisation/1960765" data-url="https://flo.uri.sh/visualisation/1960765/embed" data-width="85%"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 </center>
 | -------------
 [Back](https://dolinger-nscc.github.io/rpt/rpt4.html) | [Start](https://dolinger-nscc.github.io/rpt/)
