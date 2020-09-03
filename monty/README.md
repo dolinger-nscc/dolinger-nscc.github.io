@@ -1,4 +1,3 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Monty Hall Problem</title>
 <style type="text/css">
@@ -236,8 +235,8 @@ for (i=0;i<=5;i++)
 
 
 <br>
-This page was created using a similar simulation. Please visit the [onlinestatbook](http://onlinestatbook.com) site cited below for other statistical simulations and explanations. <br>
-[Original Simulation](http://onlinestatbook.com/2/probability/monty_hall_demo_html5/monty_hall.html) <br>
+This page was created using a similar simulation. Please visit the <a href="http://onlinestatbook.com"> onlinestatbook</a> site cited below for other statistical simulations and explanations. <br>
+<a href="http://onlinestatbook.com/2/probability/monty_hall_demo_html5/monty_hall.html"> Original Simulation</a><br>
 
 Online Statistics Education: A Multimedia Course of Study (http://onlinestatbook.com/). Project Leader: David M. Lane, Rice University.
 
