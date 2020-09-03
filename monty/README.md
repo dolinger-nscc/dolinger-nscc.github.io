@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<!-- saved from url=(0077)http://onlinestatbook.com/2/probability/monty_hall_demo_html5/monty_hall.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Monty Hall Problem</title>
