@@ -182,7 +182,7 @@ for (i=0;i<=5;i++)
 }
 */
 </script>
-</head>
+
 <h2>Monty Hall Simulation</h2>
  <p id="clicktobegin"><strong>Click on a door to begin the simulation.</strong></p>  
 <body onload="getImages()">
