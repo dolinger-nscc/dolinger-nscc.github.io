@@ -240,5 +240,4 @@ This page was created using a similar simulation. Please visit the <a href="http
 
 Online Statistics Education: A Multimedia Course of Study (http://onlinestatbook.com/). Project Leader: David M. Lane, Rice University.
 
-
-</body></html>
+</body>
