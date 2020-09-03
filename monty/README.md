@@ -235,13 +235,13 @@ for (i=0;i<=5;i++)
     <input type="button" value="Reset Stats" onclick="resetValues();setnumberofdoors()">
 
    <br clear="all"><br>
-   <div id="explanation" style="visibility:hidden; width:600px">
-  
-The results are very counterintuitive. For the three-door problem, if the contestant is correct on the first choice, then he or she will be incorrect after a switch. Or, if a contestant was incorrect on the first choice, he or she will be correct after a switch. Since the probability of being incorrect on the first choice is 0.667, then the probability of being correct after a switch is 0.6667.</div>  
 
-<br><br>
+
+<br>
+This page was created using a similar simulation. Please visit the [onlinestatbook](http://onlinestatbook.com) site cited below for other statistical simulations and explanations. <br>
+[Original Simulation](http://onlinestatbook.com/2/probability/monty_hall_demo_html5/monty_hall.html) <br>
+
 Online Statistics Education: A Multimedia Course of Study (http://onlinestatbook.com/). Project Leader: David M. Lane, Rice University.
-
 
 
 </body></html>
