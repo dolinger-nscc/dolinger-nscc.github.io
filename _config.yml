@@ -1,8 +1,0 @@
-theme: jekyll-theme-minimal
-title: Dolinger@NSCC
-description: Instructor - Lifelong Learner
-logo: "/images/patsmiles.png"
----
----
-
-@import "{{ site.theme }}";
