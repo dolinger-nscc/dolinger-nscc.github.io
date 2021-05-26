@@ -28,7 +28,6 @@ For example the Fall Semester schedule would be:
 | Special Topics - SQL (T 10:30-3:00)    | Sept 10 - Nov 9                  | Data Design II (T  10:30-3:00)  | Nov 10 - Dec 16  | 
 | Ethics and Law (T Th  8:30 - 10:30)    | Sept 9 - Dec 16                  | N/A                             | (All Semester)   | 
 
-| A - Intro to BI (MWF 8:30-10:30)           | Sept 9 - Oct 20                                      |
 
 
 <!-- #endregion -->
