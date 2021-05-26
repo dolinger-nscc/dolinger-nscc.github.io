@@ -18,21 +18,17 @@ The expectations for the course are as follows:
 |                                            | 10:30 - 3:00 Class A Lab on Thursdays                |
 
 
-For example the Fall Semester Classes would be:  
+For example the Fall Semester schedule would be:  
 
-| Course                                     | Course Durations                                     |     
-| :---                                       |  ---:                                                |
-| Initial Classes A and B                    |                                                      |
+| Course                                 | Course Duration                  | Follow-up Courses               | Course Duration  | 
+| :---                                   | ---                              | ---                             | ---:             | 
+| Intro to BI (MWF 8:30-10:30)           | Sept 9 - Oct 20                  | Data Reporting (MWF 8:30-10:30) | Oct 21 - Dec 16  |
+| Intro to BI (Th 10:30-3:00)            | Sept 9 - Oct 20                  | Data Reporting (Th 10:30-3:00)  | Oct 21 - Dec 16  |
+| Special Topics - SQL (MWF 10:30-12:30) | Sept 10 - Nov 9                  | Data Design II (MWF 8:30-10:30  | Nov 10 - Dec 16  | 
+| Special Topics - SQL (T 10:30-3:00)    | Sept 10 - Nov 9                  | Data Design II (T  10:30-3:00)  | Nov 10 - Dec 16  | 
+| Ethics and Law (T Th  8:30 - 10:30)    | Sept 9 - Dec 16                  | N/A                             | (All Semester)   | 
+
 | A - Intro to BI (MWF 8:30-10:30)           | Sept 9 - Oct 20                                      |
-| A - Intro to BI (Th 10:30-3:00)            | Sept 9 - Oct 20                                      |
-| B - Special Topics - SQL (MWF 10:30-12:30) | Sept 10 - Nov 9                                      |
-| B - Special Topics - SQL (T 10:30-3:00)    | Sept 10 - Nov 9                                      |
-| C - Ethics and Law (T Th  8:30 - 10:30)    | Sept 9 - Dec 16 (All Semester)                       |
-| Follow-up Classes A and B                  |                                                      |
-| A - Data Reporting (MWF 8:30-10:30)        | Oct 21 - Dec 16                                      |
-| A - Data Reporting (Th 10:30-3:00)         | Oct 21 - Dec 16                                      |
-| B - Data Design II (MWF 8:30-10:30)        | Nov 10 - Dec 16                                      |
-| B - Data Design II (T  10:30-3:00)         | Nov 10 - Dec 16                                      |
 
 
 <!-- #endregion -->
