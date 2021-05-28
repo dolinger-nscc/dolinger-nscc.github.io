@@ -17,6 +17,5 @@ In the diagram below, you will note the red box represents what we are calling B
 :name: All Time Horizons
 ```
 
-```python
+
 ULC, B. (n.d.). Bitmoji, Your Personal Emoji. Bitmoji. https://www.bitmoji.com/.
-```
