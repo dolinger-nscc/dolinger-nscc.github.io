@@ -18,3 +18,6 @@ Even though the importance in learning should be on the concepts and not the too
 ``` {figure} ./images/BIA3bg.png
 :name: All Time Horizons
 ```
+
+
+ULC, B. (n.d.). Bitmoji, Your Personal Emoji. Bitmoji. https://www.bitmoji.com/.

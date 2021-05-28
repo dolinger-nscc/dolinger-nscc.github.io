@@ -10,3 +10,6 @@ Now that we understand the differences between Business Intelligence and Analyti
 ``` {figure} ./images/BIA2bg.png
 :name: All Time Horizons
 ```
+
+
+ULC, B. (n.d.). Bitmoji, Your Personal Emoji. Bitmoji. https://www.bitmoji.com/.

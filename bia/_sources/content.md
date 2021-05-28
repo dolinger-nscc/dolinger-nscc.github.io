@@ -13,3 +13,6 @@ There will also be a page I will keep updated to help you prepare for your cours
 ``` {figure} ./images/bznteladv.jpg
 :name: BIA
 ```
+
+
+ULC, B. (n.d.). Bitmoji, Your Personal Emoji. Bitmoji. https://www.bitmoji.com/.
