@@ -32,7 +32,3 @@ For example the Fall Semester schedule would be:
 
 
 
-
-```python
-
-```
