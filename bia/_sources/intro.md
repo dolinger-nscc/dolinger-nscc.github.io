@@ -9,7 +9,7 @@ The courses I teach by semester are as follows:
 | Fall Semester                                 | Winter Semester                         |
 | :---                                          | ---:                                    |
 | Intro to BI                                   | Data Provisioning (ETL)                 |
-| Special Topics (SQL)                          | Statistical Learning                    |
+| Special Topics (SQL and Python for Analysts)  | Statistical Learning                    |
 | Data Reporting                                | Applied Data Analytics                  |
 | Database Design                               | Capstone Project                        |  
 
@@ -17,5 +17,3 @@ The courses I teach by semester are as follows:
 I look forward to seeing you in class!  
 
 <!-- #endregion -->
-
-

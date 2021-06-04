@@ -15,7 +15,7 @@ I will add more links as I find them:
 
 [OpenIntro Statistics](https://www.openintro.org/) This is a project that I feel is the future of textbooks going forward. The OpenIntro Statistics book is available free as a pdf and can be purchased for $20 Cdn on [amazon.ca](https://www.amazon.ca/OpenIntro-Statistics-Fourth-David-Diez/dp/1943450072/ref=sr_1_1?dchild=1&keywords=openintro+statistics&qid=1622044623&sr=8-1) if you like a bound copy. The labs contain both R and Python code samples. 
 
-
+[Mathematics for Machine Learning](https://mml-book.github.io/) Working with code in SQL, Python, or R is ultimately working with mathematics. A great, and free, resource is provided thanks to Cambridge University Press.
 
 
 NSCC has an agreement with [LinkedIn Learning](https://www.linkedin.com/learning/). With Technology changing as fast as it does, traditional textbooks cannot keep up. Using videos in lieu of text reading assignments helps with the fast-changing technical landscape. You can access LinkedIn Learning free of charge with your NSCC account and password. 

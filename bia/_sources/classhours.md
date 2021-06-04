@@ -1,7 +1,7 @@
 # Class Hours and Expectations
 ---
 
-The program is being scheduled this year, 2021-22, as a 'blended' delivery. The class schedule may look a little confusing at first, but this structure allows you to complete pre-requisite concepts before encountering them in a follow-up class. An example would be you will not go into Data Design II while still trying to master SQL. You will be able to apply your SQL skills from the Special Topics (SQL) course straight away.  
+The program is being scheduled this year, 2021-22, as a 'blended' delivery. The class schedule may look a little confusing at first, but this structure allows you to complete pre-requisite concepts before encountering them in a follow-up class. An example would be you will not go into Data Design II while still trying to master SQL. You will be able to apply your SQL skills from the Special Topics (SQL and Python) course straight away.  
 
 The expectations for the course are as follows:  
 *  You will attend the online sessions via Teams MWF from 8:30 - 1:00 daily
@@ -24,11 +24,15 @@ For example the Fall Semester schedule would be:
 | :---                                   | ---                              | ---                             | ---:             | 
 | Intro to BI (MWF 8:30-10:30)           | Sept 9 - Oct 20                  | Data Reporting (MWF 8:30-10:30) | Oct 21 - Dec 16  |
 | Intro to BI (Th 10:30-3:00)            | Sept 9 - Oct 20                  | Data Reporting (Th 10:30-3:00)  | Oct 21 - Dec 16  |
-| Special Topics - SQL (MWF 10:30-1:00)  | Sept 10 - Nov 9                  | Data Design II (MWF 8:30-10:30  | Nov 10 - Dec 16  | 
-| Special Topics - SQL (T 10:30-3:00)    | Sept 10 - Nov 9                  | Data Design II (T  10:30-3:00)  | Nov 10 - Dec 16  | 
+| Special Topics - Code (MWF 10:30-1:00) | Sept 10 - Nov 9                  | Data Design II (MWF 8:30-10:30  | Nov 10 - Dec 16  | 
+| Special Topics - Code (T 10:30-3:00)   | Sept 10 - Nov 9                  | Data Design II (T  10:30-3:00)  | Nov 10 - Dec 16  | 
 | Ethics and Law (T Th  8:30 - 10:30)    | Sept 9 - Dec 16                  | N/A                             | (All Semester)   | 
 
 
 
 
 
+
+```python
+
+```
