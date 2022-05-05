@@ -8,10 +8,10 @@ The courses I teach by semester are as follows:
 
 | Fall Semester                                 | Winter Semester                         |
 | :---                                          | ---:                                    |
-| Intro to BI                                   | Data Provisioning (ETL)                 |
-| Intro to BI Programming (SQL)                 | Intro to Data Science                   |
-| Data Reporting                                | Applied Data Science                    |
-| Database Design                               | Capstone Project                        |  
+| Intro to BI - 1st 8 weeks                     | Data Provisioning (ETL) - 1st 8 weeks   |
+| Intro to BI Programming (SQL) - 1st 8 weeks   | Intro to Data Science - 1st 8 weeks     |
+| Data Reporting - last 6 weeks                 | Applied Data Science - last 6 weeks     |
+| Database Design - last 6 weeks                | Capstone Project - last 6 weeks         |  
 
 
 I look forward to seeing you in class!  
