@@ -37,21 +37,23 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="What is Business Intelligence and Analytics?" href="alltimehorizones.html" />
+    <link rel="next" title="Program Scope and Alignment" href="coursescoping.html" />
     <link rel="prev" title="Quick Intro and Courses" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -108,6 +110,16 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="coursescoping.html">
+   Program Scope and Alignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classscoping.html">
+   Class Scope
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="alltimehorizones.html">
    What is Business Intelligence and Analytics?
   </a>
@@ -123,7 +135,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="biaskils.html">
+  <a class="reference internal" href="biaskills.html">
    Analytical Skills
   </a>
  </li>
@@ -252,24 +264,24 @@
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:left"><p>Intro to BI (MWF 8:30-10:30)</p></td>
-<td><p>Sept 7 - Nov 4</p></td>
+<td><p>Sept 7 - Nov 2</p></td>
 <td><p>Data Reporting (MWF 8:30-10:30)</p></td>
-<td class="text-align:right"><p>Nov 7 - Dec 15</p></td>
+<td class="text-align:right"><p>Nov 4 - Dec 15</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>Intro to BI (T/Th 10:30-12:30)</p></td>
-<td><p>Sept 7- Nov 4</p></td>
+<td><p>Sept 7- Nov 2</p></td>
 <td><p>Data Reporting (T/Th 10:30-12:30)</p></td>
-<td class="text-align:right"><p>Nov 7 - Dec 15</p></td>
+<td class="text-align:right"><p>Nov 4 - Dec 15</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>BI Programming (MWF 10:30-12:30)</p></td>
-<td><p>Sept 7 - Nov 4</p></td>
+<td><p>Sept 7 - Nov 2</p></td>
 <td><p>Data Design II (MWF 10:30-12:30</p></td>
-<td class="text-align:right"><p>Nov 7 - Dec 15</p></td>
+<td class="text-align:right"><p>Nov 4 - Dec 15</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>BI Programming (T/TH 1:00-3:00)</p></td>
-<td><p>Sept 7 - Nov 4</p></td>
+<td><p>Sept 7 - Nov 2</p></td>
 <td><p>Data Design II (T/TH  1:00-3:00)</p></td>
-<td class="text-align:right"><p>Nov 7 - Dec 15</p></td>
+<td class="text-align:right"><p>Nov 4 - Dec 15</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>Business Analysis Essentials (T Th  8:30 - 10:30)</p></td>
 <td><p>Sept 7 - Dec 15</p></td>
@@ -312,10 +324,10 @@
             <p class="prev-next-title">Quick Intro and Courses</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="alltimehorizones.html" title="next page">
+    <a class='right-next' id="next-link" href="coursescoping.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">What is Business Intelligence and Analytics?</p>
+        <p class="prev-next-title">Program Scope and Alignment</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -37,22 +37,24 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Business Intelligence and Analytics Concepts" href="concepts.html" />
-    <link rel="prev" title="Class Hours and Expectations" href="classhours.html" />
+    <link rel="prev" title="Class Scope" href="classscoping.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -107,6 +109,16 @@
    Class Hours and Expectations
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coursescoping.html">
+   Program Scope and Alignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classscoping.html">
+   Class Scope
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    What is Business Intelligence and Analytics?
@@ -123,7 +135,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="biaskils.html">
+  <a class="reference internal" href="biaskills.html">
    Analytical Skills
   </a>
  </li>
@@ -225,7 +237,7 @@
 <div class="tex2jax_ignore mathjax_ignore section" id="what-is-business-intelligence-and-analytics">
 <h1>What is Business Intelligence and Analytics?<a class="headerlink" href="#what-is-business-intelligence-and-analytics" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>So, now for the program name. Business Intelligence Analytics was finally renamed to Business Intelligence <em>and</em> Analytics as of Feb 2022. There is a temporal range between the two disciplines. I like to refer to this as “All-Time Horizons”. Both BI and Analytics use and are about data! We just work with the data using different strategies, tools, and objectives often with the same datasets. The difference is really what we are looking for in the data and what we want to do with the data.</p>
+<p>So, now for the program name. Business Intelligence Analytics was finally renamed to Business Intelligence <em>and</em> Analytics as of Feb 2022. There is a vast temporal range between the two disciplines. I like to refer to this as “All-Time Horizons”. Both BI and Analytics use and are about data! We just work with the data using different strategies, tools, and objectives often with the same datasets. The difference is really what we are looking for in the data and what we want to do with the data.</p>
 <p>If we are looking at historical data, this is Business Intelligence (BI), sometimes you will also hear this called data mining if still identifying dimensionality and trends in the data. If we are looking at monitoring and measuring how we are doing today (in the present) that is also BI. We deliver this information through dashboards, scorecards, and reports.</p>
 <p>Data Analytics is where we forecast and / or predict outcomes. That is why it is considered a “future” operation on the data.</p>
 <p>In the diagram below, you will note the red box represents what we are calling Business Intelligence or BI for short.</p>
@@ -261,11 +273,11 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="classhours.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="classscoping.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Class Hours and Expectations</p>
+            <p class="prev-next-title">Class Scope</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="concepts.html" title="next page">

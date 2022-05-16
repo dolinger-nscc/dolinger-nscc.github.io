@@ -24,10 +24,10 @@ For example the Fall Semester schedule would be:
 
 | Course                                | Course Duration                  | Follow-up Courses               | Course Duration  | 
 | :---                                  | ---                              | ---                             | ---:             | 
-| Intro to BI (MWF 8:30-10:30)          | Sept 7 - Nov 4                  | Data Reporting (MWF 8:30-10:30) | Nov 7 - Dec 15  |
-| Intro to BI (T/Th 10:30-12:30)         | Sept 7- Nov 4                  | Data Reporting (T/Th 10:30-12:30)  | Nov 7 - Dec 15  |
-| BI Programming (MWF 10:30-12:30)| Sept 7 - Nov 4                  | Data Design II (MWF 10:30-12:30  | Nov 7 - Dec 15  | 
-| BI Programming (T/TH 1:00-3:00)  | Sept 7 - Nov 4                  | Data Design II (T/TH  1:00-3:00)  | Nov 7 - Dec 15  | 
+| Intro to BI (MWF 8:30-10:30)          | Sept 7 - Nov 2                  | Data Reporting (MWF 8:30-10:30) | Nov 4 - Dec 15  |
+| Intro to BI (T/Th 10:30-12:30)         | Sept 7- Nov 2                  | Data Reporting (T/Th 10:30-12:30)  | Nov 4 - Dec 15  |
+| BI Programming (MWF 10:30-12:30)| Sept 7 - Nov 2                  | Data Design II (MWF 10:30-12:30  | Nov 4 - Dec 15  | 
+| BI Programming (T/TH 1:00-3:00)  | Sept 7 - Nov 2                  | Data Design II (T/TH  1:00-3:00)  | Nov 4 - Dec 15  | 
 | Business Analysis Essentials (T Th  8:30 - 10:30)   | Sept 7 - Dec 15                  | N/A                             | (All Semester)   | 
 
 

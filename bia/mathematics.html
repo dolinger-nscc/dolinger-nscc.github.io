@@ -37,22 +37,24 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Prep and Links" href="links.html" />
-    <link rel="prev" title="Analytical Skills" href="biaskils.html" />
+    <link rel="prev" title="Analytical Skills" href="biaskills.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -108,6 +110,16 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="coursescoping.html">
+   Program Scope and Alignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classscoping.html">
+   Class Scope
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="alltimehorizones.html">
    What is Business Intelligence and Analytics?
   </a>
@@ -123,7 +135,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="biaskils.html">
+  <a class="reference internal" href="biaskills.html">
    Analytical Skills
   </a>
  </li>
@@ -261,7 +273,7 @@ existing algorithms. They are often researchers who need to understand the mathe
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="biaskils.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="biaskills.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
