@@ -2,7 +2,7 @@
 ---
 
 A question often asked is, "How strong do my mathematics skills need to write code required for machine learning?"  
-A simple answer is an understanding of Statistics, Linear Algebra, and Calculus. The answer is really, "It depends". The quote below is from the [Mathematics for Machines Learning](https://mml-book.com) text that is available for free by Cambridge University Press. I do recommend downloading the book in pdf format and at least scanning it to get an understanding of the skills that are utilized in machine learning. Because of available tools and varying roles using Analytics there is a spectrum of skills required depending on the role. The analogy to music from the book provides a good explanation: 
+A simple answer is an understanding of Statistics, Linear Algebra, and Calculus. The more you understand, and can apply, about each of those disciplines the more desirable your skills will be in the market. The quote below is from the [Mathematics for Machines Learning](https://mml-book.com) text that is available for free by Cambridge University Press. I do recommend downloading the book in pdf format and at least scanning it to get an understanding of the skills that are utilized in machine learning. Because of available tools and varying roles using Analytics there is a spectrum of skills required depending on the role. The analogy to music from the book provides a good explanation: 
 
 
 > In analogy to music, there are three types of interaction that people have with machine learning:
