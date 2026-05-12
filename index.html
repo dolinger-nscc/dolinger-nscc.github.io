@@ -1,231 +1,783 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Patrick Scott Dolinger</title>
-    <meta property="og:type" content="">
-    <meta name="description" content="Landing page for ps@dolinger.ca hosted on GitHub">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/user.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Patrick Scott Dolinger — NSCC Instructor, Business Intelligence & Analytics, Data Science">
+<title>Patrick Scott Dolinger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0f2340;
+    --navy-mid:   #1a3558;
+    --navy-light: #234570;
+    --teal:       #1a8c7a;
+    --teal-light: #22b39a;
+    --amber:      #e8a020;
+    --cream:      #faf8f4;
+    --cream-dark: #f0ece4;
+    --text:       #1c2b3a;
+    --text-muted: #4a6280;
+    --text-light: #7a92aa;
+    --border:     #d8e4ee;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 200;
+    background: rgba(15,35,64,0.97);
+    backdrop-filter: blur(8px);
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; font-weight: 500; color: #fff;
+  }
+
+  .nav-name {
+    font-size: 14px; font-weight: 600; color: #e8f0f8;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px; font-weight: 500;
+    color: rgba(200,216,232,0.7);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--teal-light); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, var(--navy-light) 100%);
+    display: flex; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative background rings */
+  #hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,140,122,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -80px;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,160,32,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(26,140,122,0.2);
+    color: var(--teal-light);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  h1.hero-name {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 3.2rem; font-weight: 600;
+    color: white; line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .hero-title {
+    font-size: 1.05rem; font-weight: 300;
+    color: rgba(200,216,232,0.8);
+    margin-bottom: 28px; line-height: 1.6;
+  }
+
+  .hero-title strong { color: var(--teal-light); font-weight: 500; }
+
+  /* Credential pills */
+  .hero-creds {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .cred-pill {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12.5px; color: rgba(200,216,232,0.85);
+  }
+
+  .cred-pill span { font-size: 14px; }
+
+  /* CTA buttons */
+  .hero-ctas {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 11px 24px;
+    background: var(--teal);
+    color: white;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13.5px; font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    padding: 11px 24px;
+    background: transparent;
+    color: rgba(200,216,232,0.8);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13.5px; font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--teal-light);
+    color: var(--teal-light);
+  }
+
+  /* Hero visual card */
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    padding: 20px 24px;
+    backdrop-filter: blur(4px);
+  }
+
+  .stat-card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 2rem; font-weight: 500;
+    color: var(--teal-light);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-card-label {
+    font-size: 13px; color: rgba(200,216,232,0.65);
+    line-height: 1.4;
+  }
+
+  .stat-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 80px 48px; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 2rem; font-weight: 600;
+    color: var(--navy); line-height: 1.2;
+    letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+
+  .section-intro {
+    font-size: 15.5px; color: var(--text-muted);
+    max-width: 560px; line-height: 1.7; margin-bottom: 48px;
+  }
+
+  /* ── SKILLS GRID ── */
+  #skills { background: var(--cream); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .skill-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px 24px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .skill-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 8px 32px rgba(26,140,122,0.12);
+    transform: translateY(-3px);
+  }
+
+  .skill-card:hover::before { transform: scaleX(1); }
+
+  .skill-card.expanded {
+    border-color: var(--teal);
+    box-shadow: 0 8px 32px rgba(26,140,122,0.12);
+  }
+
+  .skill-card.expanded::before { transform: scaleX(1); }
+
+  .skill-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(26,140,122,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+    transition: background 0.2s;
+  }
+
+  .skill-card:hover .skill-icon,
+  .skill-card.expanded .skill-icon {
+    background: rgba(26,140,122,0.18);
+  }
+
+  .skill-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 8px; line-height: 1.3;
+  }
+
+  .skill-teaser {
+    font-size: 13px; color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .skill-detail {
+    display: none;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 14px; color: var(--text);
+    line-height: 1.75;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .skill-card.expanded .skill-detail { display: block; }
+
+  .skill-toggle {
+    display: flex; align-items: center; gap: 6px;
+    margin-top: 14px;
+    font-size: 12px; font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
+  .skill-toggle-icon {
+    font-size: 14px;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .skill-card.expanded .skill-toggle-icon { transform: rotate(45deg); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── ABOUT ── */
+  #about { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: start;
+  }
+
+  .about-body p {
+    font-size: 15.5px; line-height: 1.8;
+    color: var(--text); margin-bottom: 20px;
+  }
+
+  /* Credential strip */
+  .cred-strip {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-top: 32px;
+  }
+
+  .cred-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 18px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .cred-item-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(26,140,122,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  .cred-item-title {
+    font-size: 13.5px; font-weight: 600;
+    color: var(--navy); margin-bottom: 2px;
+  }
+
+  .cred-item-sub {
+    font-size: 12.5px; color: var(--text-muted); line-height: 1.4;
+  }
+
+  /* Course spotlight card */
+  .course-card {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 14px;
+    padding: 28px;
+    color: white;
+    position: sticky; top: 80px;
+  }
+
+  .course-card-tag {
+    display: inline-block;
+    background: rgba(26,140,122,0.25);
+    color: var(--teal-light);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .course-card h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.25rem; font-weight: 600;
+    margin-bottom: 10px; line-height: 1.3;
+  }
+
+  .course-card p {
+    font-size: 13.5px; color: rgba(200,216,232,0.8);
+    line-height: 1.65; margin-bottom: 20px;
+  }
+
+  .course-card a {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 9px 18px;
+    background: var(--teal);
+    color: white; border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px; font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .course-card a:hover { background: var(--teal-light); }
+
+  .course-card-divider {
+    border: none; border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 20px 0;
+  }
+
+  .course-card-meta {
+    font-size: 12px; color: rgba(200,216,232,0.5);
+    line-height: 1.6;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-top: 40px;
+  }
+
+  .contact-card {
+    display: flex; align-items: center; gap: 16px;
+    padding: 22px 20px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.2s ease;
+  }
+
+  .contact-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 4px 20px rgba(26,140,122,0.1);
+    transform: translateY(-2px);
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+
+  .contact-icon.teal { background: rgba(26,140,122,0.1); }
+  .contact-icon.navy { background: rgba(15,35,64,0.08); }
+  .contact-icon.amber { background: rgba(232,160,32,0.1); }
+
+  .contact-label {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-light); margin-bottom: 3px;
+  }
+
+  .contact-value {
+    font-size: 14px; font-weight: 500; color: var(--navy);
+    line-height: 1.3;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 28px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  footer .foot-left {
+    font-size: 13px; color: rgba(200,216,232,0.4);
+  }
+
+  footer .foot-right {
+    font-size: 12px; color: rgba(200,216,232,0.3);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    section { padding: 60px 20px; }
+    #hero { padding: 100px 20px 60px; }
+
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { display: none; }
+    h1.hero-name { font-size: 2.2rem; }
+
+    .skills-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .course-card { position: static; }
+    .contact-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    .nav-links { gap: 18px; }
+  }
+</style>
 </head>
+<body>
 
-<body id="page-top">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
-        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top" style="color: var(--light);font-size: 24px;">WeLcome</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Teaching</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <header class="masthead bg-primary text-white text-center" style="color: var(--cyan);">
-        <div class="container">
-            <h1>Patrick Dolinger</h1>
-            <hr class="star-light">
-            <img class="img-fluid d-block mx-auto mb-5" src="assets/img/SeeYouInClass.png">
-            <h2 class="font-weight-light mb-0">Data Obsessed Coder - NSCC Instructor - Lifelong Learner</h2>
-            <h2 class="font-weight-light mb-0">Action Figure</h2>
-        </div>
-    </header>
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="text-uppercase text-center text-secondary">Skills I teach</h2>
-            <hr class="star-dark mb-5">
-            <div class="row">
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" id="modal-1" data-toggle="modal" href="#portfolio-modal-1">
-                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="my-auto portfolio-item-caption-content w-100 text-center text-white"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/sql.jpg">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" data-toggle="modal" href="#portfolio-modal-2">
-                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="my-auto portfolio-item-caption-content w-100 text-center text-white"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/info.jpg">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" data-toggle="modal" href="#portfolio-modal-3">
-                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="my-auto portfolio-item-caption-content w-100 text-center text-white"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/stats.jpg">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" data-toggle="modal" href="#portfolio-modal-4">
-                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="my-auto portfolio-item-caption-content w-100 text-center text-white"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/etl.jpg">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" data-toggle="modal" href="#portfolio-modal-5">
-                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="my-auto portfolio-item-caption-content w-100 text-center text-white"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/data.jpg">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" data-toggle="modal" href="#portfolio-modal-6">
-                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="my-auto portfolio-item-caption-content w-100 text-center text-white"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/coding.jpg">
-                    </a></div>
-            </div>
-        </div>
-    </section>
-    <section id="about" class="bg-primary text-white mb-0">
-        <div class="container">
-            <h2 class="text-uppercase text-center text-white">About Me</h2>
-            <hr class="star-light mb-5">
-            <div class="row">
-                <div class="col-lg-4 ml-auto">
-                    <p class="lead" style="text-align: left;">I have had the opportunity to work for some of the greatest technology companies in the industry. I will always owe a debt of gratitude for opportunities at Cognos, Microsoft, and IBM. I began working in the analytics space in the summer of 2000 after a short career as a systems developer. I am passionate about working with data as I love the challenges it affords. It is the field I want to teach new analysts&nbsp;who in turn will share this same passion in their new career.</p>
-                </div>
-                <div class="col-lg-4 mr-auto">
-                    <p class="lead" style="text-align: left;">Education was my first passion. I hold Bachelor’s and Master's Degrees in Education from the University of North Texas and being able to pursue both passions at this point in my career is very rewarding. Analytics skills are in high demand due to the amount of business data collected. Trained analysts are required to unleash the information within this data. This demand does not appear to be dampening and it is great to see students find success in the field.</p>
-                </div>
-            </div>
-            <div class="text-center mt-4"></div>
-        </div>
-    </section>
-    <section id="contact">
-        <div class="container">
-            <h2 class="text-uppercase text-center text-secondary mb-0">Contact Me</h2>
-            <hr class="star-dark mb-5">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
-                        <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <p style="font-size: 28px;color: #00853e;"><a href="mailto:patrick.dolinger@nscc.ca">Via Email</a><br><a href="https://www.linkedin.com/in/patrick-dolinger-7b3a30206/" target="_blank">Via LinkedIn</a><br><a href="https://dolinger.ca/bia/" target="_blank">Tips for Learning Business Intelligence</a></p><small class="form-text text-danger help-block"></small>
-                            </div>
-                        </div>
-                        <div id="success"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="copyright py-4 text-center text-white"></div>
-    <div class="d-lg-none scroll-to-top position-fixed rounded"><a class="d-block js-scroll-trigger text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a></div>
-    <div class="modal text-center" role="dialog" tabindex="-1" id="portfolio-modal-1">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-lg-8 mx-auto">
-                                <h2 class="text-uppercase text-secondary mb-0">Structured Query Language (SQL)</h2>
-                                <hr class="star-dark mb-5"><img class="img-fluid mb-5" src="assets/img/sql.jpg">
-                                <p class="mb-5" style="text-align: left;">SQL language skills are the basic building blocks to perform a variety of data analytics and data science tasks. The SQL language gives the analyst the power to convert data into information.&nbsp; To accomplish this high demand task, SQL is the language used for the creation of databases, the reading of data, and management of relational database systems.<br><br>Mastering SQL is a primary skill for the data analyst.<br></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer pb-5"></div>
-            </div>
-        </div>
+<!-- NAV -->
+<nav id="page-top">
+  <a class="nav-logo" href="#page-top">
+    <div class="logo-mark">PD</div>
+    <span class="nav-name">Patrick Dolinger</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#skills">Teaching</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">NSCC Instructor · Halifax, NS</div>
+      <h1 class="hero-name">Patrick Scott<br>Dolinger</h1>
+      <p class="hero-title">
+        <strong>Data Obsessed Coder</strong> — teaching the next generation of Business Intelligence &amp; Analytics professionals at the Nova Scotia Community College.
+      </p>
+
+      <div class="hero-creds">
+        <div class="cred-pill"><span>🎓</span> M.Ed. — University of North Texas</div>
+        <div class="cred-pill"><span>💼</span> Cognos · Microsoft · IBM</div>
+        <div class="cred-pill"><span>📅</span> Analytics since 2000</div>
+        <div class="cred-pill"><span>🗄️</span> Lifelong Learner</div>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="#skills" class="btn-primary">Skills I Teach</a>
+        <a href="https://dolinger.ca/bia/" class="btn-ghost" target="_blank">BI &amp; Analytics Course Site →</a>
+      </div>
     </div>
-    <div class="modal text-center" role="dialog" tabindex="-1" id="portfolio-modal-2">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-lg-8 mx-auto">
-                                <h2 class="text-uppercase text-secondary mb-0">Reporting and Analysis</h2>
-                                <hr class="star-dark mb-5"><img class="img-fluid mb-5" src="assets/img/info.jpg">
-                                <p class="mb-5" style="text-align: left;">Reporting and analysis are the words you will often see on new job postings. Businesses continue to invest as it affords them visibility into the health of their business. It also allows them to mitigate risk when making go-forward decisions. As data volumes grow demand for skilled report authors and analysts will continue to grow as well.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer pb-5"></div>
-            </div>
+
+    <div class="hero-visual">
+      <div class="stat-card">
+        <div class="stat-card-num">25+</div>
+        <div class="stat-card-label">Years working in the analytics &amp; BI industry</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-card-num">6</div>
+          <div class="stat-card-label">Core skills taught in the certificate program</div>
         </div>
-    </div>
-    <div class="modal text-center" role="dialog" tabindex="-1" id="portfolio-modal-3">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-lg-8 mx-auto">
-                                <h2 class="text-uppercase text-secondary mb-0">Inferential Statistics</h2>
-                                <hr class="star-dark mb-5"><img class="img-fluid mb-5" src="assets/img/stats.jpg">
-                                <p class="mb-5" style="text-align: left;">Inferential statistics is a science that every analyst can benefit from mastering. The more confident an analysts is in their statistical skills the more confident they will be in presenting their findings to business leaders. Even though many say inferential statistics doesn't play a large role in analytics nor statistical learning a solid understanding allows for a deeper understanding of those disciplines.&nbsp;</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer pb-5"></div>
-            </div>
+        <div class="stat-card">
+          <div class="stat-card-num">2</div>
+          <div class="stat-card-label">Graduate degrees in Education</div>
         </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-num" style="font-size:1.1rem; color: var(--teal-light);">BI &amp; Analytics</div>
+        <div class="stat-card-label">1-Year Graduate Certificate — NSCC</div>
+      </div>
     </div>
-    <div class="modal text-center" role="dialog" tabindex="-1" id="portfolio-modal-4">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-lg-8 mx-auto">
-                                <h2 class="text-uppercase text-secondary mb-0">ETL</h2>
-                                <hr class="star-dark mb-5"><img class="img-fluid mb-5" src="assets/img/etl.jpg">
-                                <p class="mb-5" style="text-align: left;">Extraction, Transformation, and Loading of data (ETL) is the administrative process of moving data from transactional data stores to optimized environments for reporting. Although often viewed as a tactical administrative process, knowledge of proper data modeling increases the value of an ETL expert.&nbsp;</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer pb-5"></div>
-            </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Curriculum</div>
+    <h2 class="section-title">Skills I Teach</h2>
+    <p class="section-intro">The six core competencies that form the foundation of a career in Business Intelligence and Analytics. Click any card to read more.</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-title">Structured Query Language (SQL)</div>
+        <p class="skill-teaser">The essential language for querying, managing, and transforming data in relational databases.</p>
+        <div class="skill-detail">
+          SQL language skills are the basic building blocks to perform a variety of data analytics and data science tasks. The SQL language gives the analyst the power to convert data into information. SQL is used for the creation of databases, the reading of data, and management of relational database systems.<br><br>
+          Mastering SQL is a primary skill for the data analyst — and one that remains in demand regardless of which other tools or languages come and go.
         </div>
-    </div>
-    <div class="modal text-center" role="dialog" tabindex="-1" id="portfolio-modal-5">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-lg-8 mx-auto">
-                                <h2 class="text-uppercase text-secondary mb-0">Data Modeling</h2>
-                                <hr class="star-dark mb-5"><img class="img-fluid mb-5" src="assets/img/data.jpg">
-                                <p class="mb-5" style="text-align: left;">Successful reporting, analysis, and data science projects often credit the state the of the data model for the success. In turn, projects that often face challenges and delays find the issues primarily were related to a poor data model. The Kimball and&nbsp; Inmon warehouse strategies are quite mature and modern tools allow for easy implementation of good practices that align to either chosen methodology or hybrid thereof.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer pb-5"></div>
-            </div>
+        <div class="skill-toggle">Read more <span class="skill-toggle-icon">+</span></div>
+      </div>
+
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-icon">📊</div>
+        <div class="skill-title">Reporting and Analysis</div>
+        <p class="skill-teaser">Turning raw data into the dashboards, scorecards, and reports that drive business decisions.</p>
+        <div class="skill-detail">
+          Reporting and analysis are the words you will often see on job postings. Businesses continue to invest in this capability because it affords them visibility into the health of their operations and allows them to mitigate risk when making go-forward decisions.<br><br>
+          As data volumes grow, demand for skilled report authors and analysts will continue to grow as well.
         </div>
-    </div>
-    <div class="modal text-center" role="dialog" tabindex="-1" id="portfolio-modal-6">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-lg-8 mx-auto">
-                                <h2 class="text-uppercase text-secondary mb-0">Programming in R and PythoN</h2>
-                                <hr class="star-dark mb-5"><img class="img-fluid mb-5" src="assets/img/coding.jpg">
-                                <p class="mb-5" style="text-align: left;">Advanced analysts often become interested in taking their skills to the predictive analytics space. Commonly referred to as "Data Science" the main idea of this field is to "discover the questions the business should be asking". This is an extension of the analyst's quest for finding answers from within the data available. Statistical and Machine learning can be accomplished with the aid of packages within the Python and R languages. R is the language of choice for many analysts as it was written from the bottom up for statistics and not general programming.&nbsp; Conversely,&nbsp; Python has been taking the lead in popularity due to advancements in specific libraries that make machine learning more accessible to programmers.&nbsp; It is best to learn one of these languages for data science and then learn the syntax for the other as needed.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer pb-5"></div>
-            </div>
+        <div class="skill-toggle">Read more <span class="skill-toggle-icon">+</span></div>
+      </div>
+
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-icon">📐</div>
+        <div class="skill-title">Inferential Statistics</div>
+        <p class="skill-teaser">The science of drawing conclusions from data — a skill that sets confident analysts apart.</p>
+        <div class="skill-detail">
+          Inferential statistics is a discipline every analyst can benefit from mastering. The more confident an analyst is in their statistical skills, the more confident they will be in presenting findings to business leaders.<br><br>
+          A solid grounding in inferential statistics enables a deeper understanding of both traditional analytics and the statistical learning models used in data science.
         </div>
+        <div class="skill-toggle">Read more <span class="skill-toggle-icon">+</span></div>
+      </div>
+
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-icon">🔄</div>
+        <div class="skill-title">ETL — Extract, Transform, Load</div>
+        <p class="skill-teaser">Moving and shaping data from source systems into environments optimized for reporting.</p>
+        <div class="skill-detail">
+          Extraction, Transformation, and Loading (ETL) is the process of moving data from transactional data stores into optimized environments for reporting and analysis. Although often viewed as a tactical administrative process, knowledge of proper data modeling significantly increases the value an ETL practitioner brings to a project.
+        </div>
+        <div class="skill-toggle">Read more <span class="skill-toggle-icon">+</span></div>
+      </div>
+
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-icon">🏗️</div>
+        <div class="skill-title">Data Modeling</div>
+        <p class="skill-teaser">The architectural foundation that determines the success of every reporting and analytics project.</p>
+        <div class="skill-detail">
+          Successful reporting, analysis, and data science projects often credit the state of the data model for their success. Conversely, projects that face challenges and delays often trace their issues back to a poor data model.<br><br>
+          The Kimball and Inmon warehouse strategies are well-established, and modern tools allow for easy implementation of good practices aligned to either methodology — or a hybrid approach.
+        </div>
+        <div class="skill-toggle">Read more <span class="skill-toggle-icon">+</span></div>
+      </div>
+
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-title">Programming in Python &amp; R</div>
+        <p class="skill-teaser">Extending analytical skills into predictive analytics, machine learning, and data science.</p>
+        <div class="skill-detail">
+          Advanced analysts often extend their skills into the predictive analytics space — commonly referred to as "Data Science." Statistical and machine learning can be accomplished with the aid of powerful libraries within Python and R.<br><br>
+          Python has taken the lead in industry demand due to advancements in libraries that make machine learning more accessible. The recommendation: learn Python deeply, then learn R syntax as needed. The concepts transfer; the syntax is the easy part.
+        </div>
+        <div class="skill-toggle">Read more <span class="skill-toggle-icon">+</span></div>
+      </div>
+
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets/js/freelancer.js"></script>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-label">Background</div>
+        <h2 class="section-title">About Me</h2>
+
+        <p>I have had the opportunity to work for some of the greatest technology companies in the industry. I will always owe a debt of gratitude for the opportunities at <strong>Cognos, Microsoft, and IBM</strong>. I began working in the analytics space in the summer of 2000 after a short career as a systems developer, and have been passionate about working with data ever since.</p>
+
+        <p>It is the field I want to teach — to develop new analysts who will carry this same passion forward in their careers. Analytics skills are in high demand, driven by the sheer volume of business data being collected. Trained analysts are required to unleash the information within that data, and that demand shows no sign of dampening.</p>
+
+        <p>Education was my first passion. Holding Bachelor's and Master's Degrees in Education from the <strong>University of North Texas</strong>, being able to pursue both passions at this point in my career is genuinely rewarding. It is great to see students find success in the field.</p>
+
+        <div class="cred-strip">
+          <div class="cred-item">
+            <div class="cred-item-icon">🎓</div>
+            <div>
+              <div class="cred-item-title">M.Ed. &amp; B.Ed. — University of North Texas</div>
+              <div class="cred-item-sub">Bachelor's and Master's Degrees in Education</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-icon">💼</div>
+            <div>
+              <div class="cred-item-title">Industry Experience — Cognos, Microsoft, IBM</div>
+              <div class="cred-item-sub">Analytics and BI practitioner since 2000</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-icon">🏫</div>
+            <div>
+              <div class="cred-item-title">NSCC — Nova Scotia Community College</div>
+              <div class="cred-item-sub">Instructor, BI &amp; Analytics Graduate Certificate Program</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="course-card">
+          <div class="course-card-tag">Course Resource</div>
+          <h3>Business Intelligence &amp; Analytics</h3>
+          <p>A comprehensive introduction to the BI &amp; Analytics landscape — concepts, tools, skills, career paths, and curated learning resources for new students.</p>
+          <a href="https://dolinger.ca/bia/" target="_blank">Visit the Course Site →</a>
+          <hr class="course-card-divider">
+          <div class="course-card-meta">
+            Covers: All-Time Horizons · Data Science Pillars · Technologies (Power BI, SQL Server, Python) · Analytical Skills · Career Guidance
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Contact Me</h2>
+    <p class="section-intro">Whether you're a prospective student, a colleague, or someone interested in the BI &amp; Analytics program — I'd love to hear from you.</p>
+
+    <div class="contact-grid">
+      <a href="mailto:patrick.dolinger@nscc.ca" class="contact-card">
+        <div class="contact-icon teal">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">patrick.dolinger@nscc.ca</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/patrick-dolinger-7b3a30206/" target="_blank" class="contact-card">
+        <div class="contact-icon navy">🔗</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">Connect with me</div>
+        </div>
+      </a>
+      <a href="https://dolinger.ca/bia/" target="_blank" class="contact-card">
+        <div class="contact-icon amber">📖</div>
+        <div>
+          <div class="contact-label">Course Site</div>
+          <div class="contact-value">BI &amp; Analytics Resource</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-left">© 2026 Patrick Scott Dolinger · Halifax, Nova Scotia</div>
+  <div class="foot-right">NSCC — Business Intelligence &amp; Analytics</div>
+</footer>
+
+<script>
+  function toggleSkill(card) {
+    const isExpanded = card.classList.contains('expanded');
+    // Close all others
+    document.querySelectorAll('.skill-card.expanded').forEach(c => c.classList.remove('expanded'));
+    // Toggle this one
+    if (!isExpanded) card.classList.add('expanded');
+  }
+
+  // Smooth active nav link highlight on scroll
+  const sections = document.querySelectorAll('section[id], nav[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          a.style.color = a.getAttribute('href') === '#' + entry.target.id
+            ? 'var(--teal-light)' : '';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
 </body>
-
 </html>
