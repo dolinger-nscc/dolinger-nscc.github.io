@@ -1,1 +1,1821 @@
-<meta http-equiv="Refresh" content="0; url=alltimehorizons.html" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Intelligence & Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f2340;
+    --navy-mid: #1a3558;
+    --navy-light: #234570;
+    --teal: #1a8c7a;
+    --teal-light: #22b39a;
+    --amber: #e8a020;
+    --amber-light: #f5c04a;
+    --cream: #faf8f4;
+    --cream-dark: #f0ece4;
+    --text: #1c2b3a;
+    --text-muted: #4a6280;
+    --text-light: #7a92aa;
+    --border: #d8e4ee;
+    --sidebar-w: 280px;
+    --content-max: 760px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #c8d8e8;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar-header {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-bottom: 6px;
+  }
+
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e8f0f8;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+
+  .logo-sub {
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 400;
+    margin-top: 2px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .sidebar-search {
+    margin-top: 16px;
+    position: relative;
+  }
+
+  .sidebar-search input {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 8px 12px 8px 32px;
+    color: #c8d8e8;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+  }
+
+  .sidebar-search input::placeholder { color: rgba(200,216,232,0.4); }
+  .sidebar-search input:focus { border-color: var(--teal); background: rgba(255,255,255,0.1); }
+
+  .search-icon {
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+    color: rgba(200,216,232,0.4);
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  nav {
+    padding: 16px 0;
+    flex: 1;
+  }
+
+  .nav-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(200,216,232,0.35);
+    padding: 8px 24px 4px;
+    margin-top: 8px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 24px;
+    font-size: 13.5px;
+    color: rgba(200,216,232,0.75);
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  .nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: #e8f0f8;
+    border-left-color: rgba(26,140,122,0.4);
+  }
+
+  .nav-item.active {
+    background: rgba(26,140,122,0.15);
+    color: var(--teal-light);
+    border-left-color: var(--teal-light);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(200,216,232,0.3);
+    min-width: 18px;
+  }
+
+  .nav-item.active .nav-num { color: var(--teal-light); opacity: 0.7; }
+
+  .sidebar-footer {
+    padding: 20px 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    color: rgba(200,216,232,0.35);
+    line-height: 1.6;
+  }
+
+  /* ── MAIN CONTENT ── */
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Top bar */
+  .topbar {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .topbar-breadcrumb {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .topbar-breadcrumb .sep { color: var(--border); }
+  .topbar-breadcrumb .current { color: var(--text); font-weight: 500; }
+
+  .topbar-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .btn-outline {
+    padding: 5px 12px;
+    font-size: 12px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: white;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  /* Content area */
+  .content-wrap {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  .content-main {
+    padding: 48px 48px 48px 0;
+    max-width: var(--content-max);
+  }
+
+  /* page display */
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.2s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Page hero */
+  .page-hero {
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: rgba(26,140,122,0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  h1.page-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .page-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* Body typography */
+  .content-body p {
+    font-size: 15.5px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .content-body h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 40px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .content-body h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy-mid);
+    margin: 28px 0 12px;
+  }
+
+  /* Callout boxes */
+  .callout {
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 28px 0;
+    display: flex;
+    gap: 14px;
+  }
+
+  .callout.note {
+    background: rgba(26,140,122,0.06);
+    border-left: 4px solid var(--teal);
+  }
+
+  .callout.tip {
+    background: rgba(232,160,32,0.07);
+    border-left: 4px solid var(--amber);
+  }
+
+  .callout.important {
+    background: rgba(15,35,64,0.05);
+    border-left: 4px solid var(--navy-mid);
+  }
+
+  .callout-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .callout-content p {
+    margin: 0 !important;
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+  }
+
+  .callout-title {
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+  }
+
+  /* Quote / blockquote */
+  blockquote {
+    margin: 28px 0;
+    padding: 20px 24px;
+    background: var(--cream-dark);
+    border-left: 4px solid var(--navy-light);
+    border-radius: 0 8px 8px 0;
+  }
+
+  blockquote p {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem !important;
+    color: var(--navy-mid) !important;
+    line-height: 1.75 !important;
+    margin: 0 !important;
+  }
+
+  .quote-attr {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 10px;
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Images */
+  .content-img {
+    width: 100%;
+    border-radius: 8px;
+    margin: 24px 0;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .img-caption {
+    font-size: 12.5px;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: -16px;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  /* Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14.5px;
+  }
+
+  .data-table thead {
+    background: var(--navy);
+    color: white;
+  }
+
+  .data-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+
+  .data-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .data-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* Links list */
+  .link-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.15s ease;
+    background: white;
+  }
+
+  .link-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 2px 12px rgba(26,140,122,0.1);
+    transform: translateY(-1px);
+  }
+
+  .link-card-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(26,140,122,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .link-card-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .link-card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Right TOC */
+  .content-toc {
+    padding: 48px 0 48px 32px;
+    border-left: 1px solid var(--border);
+    position: sticky;
+    top: 52px;
+    max-height: calc(100vh - 52px);
+    overflow-y: auto;
+    align-self: start;
+  }
+
+  .toc-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+
+  .toc-link {
+    display: block;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 4px 0;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    margin-left: -11px;
+    line-height: 1.4;
+    transition: all 0.15s;
+  }
+
+  .toc-link:hover { color: var(--teal); border-left-color: var(--teal); }
+
+  /* Prev/Next */
+  .page-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 52px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .page-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    background: white;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s ease;
+    flex: 1;
+    max-width: 280px;
+  }
+
+  .page-nav-btn:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    box-shadow: 0 2px 10px rgba(26,140,122,0.1);
+  }
+
+  .page-nav-btn.next { margin-left: auto; flex-direction: row-reverse; text-align: right; }
+
+  .page-nav-direction {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .page-nav-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  /* Landing page */
+  .landing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .landing-card {
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+  }
+
+  .landing-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 4px 20px rgba(26,140,122,0.12);
+    transform: translateY(-2px);
+  }
+
+  .landing-card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  .landing-card-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .landing-card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .landing-card-arrow {
+    margin-top: 14px;
+    font-size: 18px;
+    color: var(--teal);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .landing-card:hover .landing-card-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  .hero-band {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    border-radius: 12px;
+    padding: 36px 36px 32px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-band::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,140,122,0.25) 0%, transparent 70%);
+  }
+
+  .hero-band h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .hero-band p {
+    font-size: 15px;
+    color: rgba(200,216,232,0.85);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(26,140,122,0.25);
+    color: var(--teal-light);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  /* Citation */
+  .citation {
+    font-size: 12.5px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .citation a { color: var(--teal); text-decoration: none; }
+  .citation a:hover { text-decoration: underline; }
+
+  a { color: var(--teal); }
+
+  /* Mobile toggle */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px; right: 20px;
+    width: 48px; height: 48px;
+    background: var(--navy);
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+
+  @media (max-width: 900px) {
+    #sidebar { transform: translateX(-100%); }
+    #sidebar.open { transform: translateX(0); }
+    #main { margin-left: 0; }
+    .content-wrap { grid-template-columns: 1fr; padding: 0 20px; }
+    .content-toc { display: none; }
+    .content-main { padding: 32px 0; }
+    .topbar { padding: 0 20px; }
+    .menu-toggle { display: flex; align-items: center; justify-content: center; }
+    .landing-grid { grid-template-columns: 1fr; }
+    h1.page-title { font-size: 1.65rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a class="sidebar-logo" href="#" onclick="showPage('home');return false;">
+      <div class="logo-mark">BI</div>
+      <div>
+        <div class="logo-text">Business Intelligence</div>
+        <div class="logo-sub">& Analytics</div>
+      </div>
+    </a>
+    <div class="sidebar-search">
+      <span class="search-icon">⌕</span>
+      <input type="text" placeholder="Search pages…" id="searchInput" oninput="filterNav(this.value)">
+    </div>
+  </div>
+
+  <nav id="sideNav">
+    <div class="nav-section-label">Introduction</div>
+
+    <a class="nav-item active" data-page="home" onclick="showPage('home');return false;" href="#">
+      <span class="nav-num">00</span> Overview
+    </a>
+    <a class="nav-item" data-page="p1" onclick="showPage('p1');return false;" href="#">
+      <span class="nav-num">01</span> What is BI & Analytics?
+    </a>
+    <a class="nav-item" data-page="p2" onclick="showPage('p2');return false;" href="#">
+      <span class="nav-num">02</span> BI & Analytics Concepts
+    </a>
+    <a class="nav-item" data-page="p3" onclick="showPage('p3');return false;" href="#">
+      <span class="nav-num">03</span> Data Science Pillars
+    </a>
+
+    <div class="nav-section-label">Scope & Skills</div>
+
+    <a class="nav-item" data-page="p4" onclick="showPage('p4');return false;" href="#">
+      <span class="nav-num">04</span> Learning Scope
+    </a>
+    <a class="nav-item" data-page="p5" onclick="showPage('p5');return false;" href="#">
+      <span class="nav-num">05</span> Technologies & Languages
+    </a>
+    <a class="nav-item" data-page="p6" onclick="showPage('p6');return false;" href="#">
+      <span class="nav-num">06</span> Analytical Skills
+    </a>
+    <a class="nav-item" data-page="p7" onclick="showPage('p7');return false;" href="#">
+      <span class="nav-num">07</span> Mathematics in Analytics
+    </a>
+
+    <div class="nav-section-label">Resources</div>
+
+    <a class="nav-item" data-page="p8" onclick="showPage('p8');return false;" href="#">
+      <span class="nav-num">08</span> Prep & Links
+    </a>
+    <a class="nav-item" data-page="p9" onclick="showPage('p9');return false;" href="#">
+      <span class="nav-num">09</span> Becoming a BI Analyst
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    By Patrick Scott Dolinger<br>
+    © Copyright 2023
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div id="main">
+  <div class="topbar">
+    <div class="topbar-breadcrumb">
+      <span>BIA</span>
+      <span class="sep">›</span>
+      <span class="current" id="breadcrumb">Overview</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-outline" onclick="window.print()">⬇ PDF</button>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+    <div class="content-main">
+
+      <!-- HOME / OVERVIEW -->
+      <div class="page active" id="page-home">
+        <div class="hero-band">
+          <div class="hero-tag">Graduate Certificate Program</div>
+          <h1>Business Intelligence<br>& Analytics</h1>
+          <p>A comprehensive guide to understanding the BI & Analytics landscape — from foundational concepts through the skills, tools, and career pathways that define the field.</p>
+        </div>
+
+        <p style="color:var(--text-muted); font-size:14px; margin-bottom:20px;">Select a topic to begin reading, or continue in sequence using the navigation below each page.</p>
+
+        <div class="landing-grid">
+          <a class="landing-card" onclick="showPage('p1');return false;" href="#">
+            <div class="landing-card-num">01</div>
+            <div class="landing-card-title">What is BI & Analytics?</div>
+            <div class="landing-card-desc">Understand the "All-Time Horizons" framework — how BI and Analytics differ in strategy and purpose.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+          <a class="landing-card" onclick="showPage('p2');return false;" href="#">
+            <div class="landing-card-num">02</div>
+            <div class="landing-card-title">BI & Analytics Concepts</div>
+            <div class="landing-card-desc">Core concepts shared across both disciplines — and why learning concepts beats learning tools.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+          <a class="landing-card" onclick="showPage('p3');return false;" href="#">
+            <div class="landing-card-num">03</div>
+            <div class="landing-card-title">Data Science Pillars</div>
+            <div class="landing-card-desc">The three skill domains industry expects, illustrated through two influential Venn diagrams.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+          <a class="landing-card" onclick="showPage('p4');return false;" href="#">
+            <div class="landing-card-num">04</div>
+            <div class="landing-card-title">Learning Scope</div>
+            <div class="landing-card-desc">Where BI & Analytics sits within the broader data science ecosystem — mapped across all time horizons.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+          <a class="landing-card" onclick="showPage('p5');return false;" href="#">
+            <div class="landing-card-num">05</div>
+            <div class="landing-card-title">Technologies & Languages</div>
+            <div class="landing-card-desc">Why Power BI, SQL Server, SSIS, and Python were chosen as the core teaching tools.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+          <a class="landing-card" onclick="showPage('p6');return false;" href="#">
+            <div class="landing-card-num">06</div>
+            <div class="landing-card-title">Analytical Skills</div>
+            <div class="landing-card-desc">The skills that make an analyst valuable — often overlooked in job postings and career planning.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+          <a class="landing-card" onclick="showPage('p7');return false;" href="#">
+            <div class="landing-card-num">07</div>
+            <div class="landing-card-title">Mathematics in Analytics</div>
+            <div class="landing-card-desc">Statistics, Linear Algebra, and Calculus — and the music analogy that frames how deep you need to go.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+          <a class="landing-card" onclick="showPage('p8');return false;" href="#">
+            <div class="landing-card-num">08</div>
+            <div class="landing-card-title">Prep & Links</div>
+            <div class="landing-card-desc">What to study before you start — Excel, SQL, stats — plus curated free resources and LinkedIn Learning picks.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+          <a class="landing-card" onclick="showPage('p9');return false;" href="#">
+            <div class="landing-card-num">09</div>
+            <div class="landing-card-title">Becoming a BI Analyst</div>
+            <div class="landing-card-desc">Why BI roles require experience, what the role demands, and how to plot a realistic career path.</div>
+            <div class="landing-card-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE 1: What is BI -->
+      <div class="page" id="page-p1">
+        <div class="page-hero">
+          <span class="page-tag">Introduction · 01</span>
+          <h1 class="page-title">What is Business Intelligence & Analytics?</h1>
+          <p class="page-intro">BI and Analytics are two separate disciplines with vastly different skill sets — both working with data, but asking fundamentally different questions of it.</p>
+        </div>
+
+        <div class="content-body">
+          <p>Business Intelligence <em>and</em> Analytics are actually two separate disciplines and there are vast differences in skill sets between the two. I like to refer to this as <strong>"All-Time Horizons."</strong> That said, both BI and Analytics use data and are about data. We just work with the data using different strategies, tools, and objectives — often with the same datasets. The difference is really <em>what</em> we are looking for in the data and <em>what</em> we want to do with the data.</p>
+
+          <div style="margin: 24px 0; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+          <svg width="100%" viewBox="0 0 680 420" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Business Intelligence and Analytics — All-Time Horizons</title>
+            <desc>A three-column diagram showing Past (Data Analysis), Present (Reporting), and Future (Data Analytics) with associated activities. The Past and Present columns are highlighted in teal as the BI zone.</desc>
+            <defs>
+              <marker id="arrowR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+              <marker id="arrowL" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M8 1L2 5L8 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+            <!-- Title -->
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="15" fill="#1c2b3a" x="340" y="30" text-anchor="middle">Business Intelligence and Analytics</text>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#4a6280" x="340" y="48" text-anchor="middle">All-Time Horizons</text>
+            <!-- BI highlight zone border -->
+            <rect x="44" y="62" width="406" height="228" rx="14" fill="rgba(26,140,122,0.05)" stroke="#1a8c7a" stroke-width="1.5"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#1a8c7a" x="247" y="306" text-anchor="middle">← Business Intelligence zone</text>
+            <!-- Column fills -->
+            <rect x="52" y="72" width="186" height="210" rx="10" fill="rgba(26,140,122,0.08)" stroke="#1a8c7a" stroke-width="0.5"/>
+            <rect x="254" y="72" width="186" height="210" rx="10" fill="rgba(26,140,122,0.08)" stroke="#1a8c7a" stroke-width="0.5"/>
+            <rect x="456" y="72" width="184" height="210" rx="10" fill="rgba(83,74,183,0.07)" stroke="#534AB7" stroke-width="0.5"/>
+            <!-- Column headers -->
+            <rect x="84" y="80" width="120" height="34" rx="8" fill="#1D9E75" fill-opacity="0.85"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="white" x="144" y="102" text-anchor="middle">Past</text>
+            <rect x="286" y="80" width="120" height="34" rx="8" fill="#1D9E75" fill-opacity="0.85"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="white" x="346" y="102" text-anchor="middle">Present</text>
+            <rect x="488" y="80" width="120" height="34" rx="8" fill="#534AB7" fill-opacity="0.8"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="white" x="548" y="102" text-anchor="middle">Future</text>
+            <!-- Time arrows -->
+            <line x1="88" y1="134" x2="196" y2="134" stroke="#1D9E75" stroke-width="2" marker-start="url(#arrowL)" marker-end="url(#arrowR)"/>
+            <line x1="290" y1="134" x2="398" y2="134" stroke="#1D9E75" stroke-width="2" marker-start="url(#arrowL)" marker-end="url(#arrowR)"/>
+            <line x1="492" y1="134" x2="596" y2="134" stroke="#534AB7" stroke-width="2" marker-end="url(#arrowR)"/>
+            <!-- Sub-labels -->
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#0F6E56" x="144" y="160" text-anchor="middle">Data Analysis</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#0F6E56" x="346" y="160" text-anchor="middle">Reporting</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#534AB7" x="548" y="160" text-anchor="middle">Data Analytics</text>
+            <!-- Divider -->
+            <line x1="52" y1="174" x2="638" y2="174" stroke="#d8e4ee" stroke-width="0.5"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#7a92aa" x="340" y="192" text-anchor="middle">What happens across time?</text>
+            <!-- Past bullets -->
+            <circle cx="66" cy="211" r="2.5" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="76" y="215">Query databases</text>
+            <circle cx="66" cy="231" r="2.5" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="76" y="235">Align data to business needs</text>
+            <circle cx="66" cy="251" r="2.5" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="76" y="255">Analyse processes</text>
+            <circle cx="66" cy="271" r="2.5" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="76" y="275">Map to business goals</text>
+            <!-- Present bullets -->
+            <circle cx="268" cy="211" r="2.5" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="278" y="215">Author reports</text>
+            <circle cx="268" cy="231" r="2.5" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="278" y="235">Establish &amp; measure KPIs</text>
+            <circle cx="268" cy="251" r="2.5" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="278" y="255">Manage metric initiatives</text>
+            <circle cx="268" cy="271" r="2.5" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="278" y="275">Author dashboards</text>
+            <!-- Future bullets -->
+            <circle cx="468" cy="211" r="2.5" fill="#534AB7"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="478" y="215">Create predictions</text>
+            <circle cx="468" cy="231" r="2.5" fill="#534AB7"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="478" y="235">Apply machine learning</text>
+            <circle cx="468" cy="251" r="2.5" fill="#534AB7"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="478" y="255">Identify relationships</text>
+            <circle cx="468" cy="271" r="2.5" fill="#534AB7"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#1c2b3a" x="478" y="275">(regressions, etc.)</text>
+            <!-- Column separators -->
+            <line x1="246" y1="72" x2="246" y2="282" stroke="#d8e4ee" stroke-width="0.5" stroke-dasharray="4 3"/>
+            <line x1="448" y1="72" x2="448" y2="282" stroke="#d8e4ee" stroke-width="0.5" stroke-dasharray="4 3"/>
+            <!-- Legend -->
+            <rect x="52" y="320" width="576" height="40" rx="8" fill="none" stroke="#d8e4ee" stroke-width="0.5"/>
+            <rect x="68" y="334" width="12" height="12" rx="3" fill="#1D9E75" fill-opacity="0.7"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#4a6280" x="86" y="344">Business Intelligence (Past &amp; Present)</text>
+            <rect x="320" y="334" width="12" height="12" rx="3" fill="#534AB7" fill-opacity="0.6"/>
+            <text font-family="'DM Sans',sans-serif" font-size="12" fill="#4a6280" x="338" y="344">Data Analytics (Future)</text>
+            <!-- Footer note -->
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#7a92aa" x="340" y="396" text-anchor="middle">Both disciplines work with data — the difference is what you're asking of it</text>
+          </svg>
+          </div>
+
+          <div class="callout note">
+            <div class="callout-icon">📊</div>
+            <div class="callout-content">
+              <div class="callout-title">Business Intelligence</div>
+              <p>If we are looking at <strong>historical data</strong>, this is Business Intelligence (BI) — sometimes called data mining. We are primarily identifying dimensionality and trends. If we are monitoring and measuring how we are doing <strong>today</strong> (in the present), that is also BI. We deliver this information through dashboards, scorecards, and reports.</p>
+            </div>
+          </div>
+
+          <div class="callout tip">
+            <div class="callout-icon">🔮</div>
+            <div class="callout-content">
+              <div class="callout-title">Data Analytics</div>
+              <p>Data Analytics is where we <strong>forecast and predict outcomes</strong>. That is why it is considered a "future" operation on the data. In the diagram above, the highlighted teal zone represents Business Intelligence — everything to the right is the Analytics domain.</p>
+            </div>
+          </div>
+
+          <p>In the diagram above, the highlighted teal zone represents what we are calling Business Intelligence or BI for short.</p>
+
+          <div class="citation">
+            ULC, B. (n.d.). Bitmoji, Your Personal Emoji. Bitmoji. <a href="https://www.bitmoji.com/" target="_blank">https://www.bitmoji.com/</a>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('home')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Back to</span><span class="page-nav-title">Overview</span></span>
+          </button>
+          <button class="page-nav-btn next" onclick="showPage('p2')">
+            <span>→</span>
+            <span><span class="page-nav-direction">Next</span><span class="page-nav-title">BI & Analytics Concepts</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 2: Concepts -->
+      <div class="page" id="page-p2">
+        <div class="page-hero">
+          <span class="page-tag">Introduction · 02</span>
+          <h1 class="page-title">Business Intelligence & Analytics Concepts</h1>
+          <p class="page-intro">Concepts that apply across the all-time horizons — and why mastering them matters more than mastering any specific tool.</p>
+        </div>
+
+        <div class="content-body">
+          <p>Now that we understand the differences between Business Intelligence and Analytics, let's look at the concepts we will cover that apply across all time horizons. The industry is flooded with vendors and tools that perform the same operations and functions on the data. Just like there are many automobile manufacturers, there are as many — or possibly more — software vendors in the Business Intelligence and Analytics space.</p>
+
+          <blockquote>
+            <p>Learn one tool especially well for each thing you are attempting to accomplish. Focus on the concepts and not the tools. Once you have a firm understanding of the concepts, you can pick up any toolset in short order.</p>
+          </blockquote>
+
+          <div style="margin: 24px 0; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+          <svg width="100%" viewBox="0 0 680 370" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>BI and Analytics Core Concepts</title>
+            <desc>A hub-and-spoke diagram showing core BI and Analytics concepts radiating from a central "Concepts" node: Data Modeling, ETL / Data Integration, Reporting & Dashboards, Statistical Analysis, Data Visualization, and Database & SQL.</desc>
+
+            <!-- Title -->
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="14" fill="#1c2b3a" x="340" y="26" text-anchor="middle">Core Concepts Across All Time Horizons</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#7a92aa" x="340" y="44" text-anchor="middle">These concepts apply regardless of which tools you use</text>
+
+            <!-- Spoke lines (drawn first, behind nodes) -->
+            <!-- Center to Data Modeling (top-left) -->
+            <line x1="340" y1="200" x2="178" y2="118" stroke="#d8e4ee" stroke-width="1.2"/>
+            <!-- Center to ETL (top-right) -->
+            <line x1="340" y1="200" x2="502" y2="118" stroke="#d8e4ee" stroke-width="1.2"/>
+            <!-- Center to Reporting (left) -->
+            <line x1="340" y1="200" x2="110" y2="210" stroke="#d8e4ee" stroke-width="1.2"/>
+            <!-- Center to Statistics (right) -->
+            <line x1="340" y1="200" x2="570" y2="210" stroke="#d8e4ee" stroke-width="1.2"/>
+            <!-- Center to Visualization (bottom-left) -->
+            <line x1="340" y1="200" x2="178" y2="296" stroke="#d8e4ee" stroke-width="1.2"/>
+            <!-- Center to Database (bottom-right) -->
+            <line x1="340" y1="200" x2="502" y2="296" stroke="#d8e4ee" stroke-width="1.2"/>
+
+            <!-- Center node -->
+            <circle cx="340" cy="200" r="52" fill="#0f2340" fill-opacity="0.92"/>
+            <circle cx="340" cy="200" r="52" fill="none" stroke="#1a8c7a" stroke-width="2"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="14" fill="white" x="340" y="196" text-anchor="middle">Concepts</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="rgba(200,216,232,0.7)" x="340" y="214" text-anchor="middle">not tools</text>
+
+            <!-- Satellite: Data Modeling (top-left) -->
+            <rect x="96" y="80" width="164" height="52" rx="10" fill="#e1f5ee" stroke="#1D9E75" stroke-width="1"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="178" y="101" text-anchor="middle">Data Modeling</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="178" y="120" text-anchor="middle">Dimensions, facts, schemas</text>
+
+            <!-- Satellite: ETL / Data Integration (top-right) -->
+            <rect x="420" y="80" width="164" height="52" rx="10" fill="#e1f5ee" stroke="#1D9E75" stroke-width="1"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="502" y="101" text-anchor="middle">ETL & Integration</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="502" y="120" text-anchor="middle">Extract, transform, load</text>
+
+            <!-- Satellite: Reporting (left) -->
+            <rect x="28" y="184" width="164" height="52" rx="10" fill="#eeedfe" stroke="#534AB7" stroke-width="1"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#26215C" x="110" y="205" text-anchor="middle">Reporting</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#3C3489" x="110" y="224" text-anchor="middle">Dashboards, scorecards</text>
+
+            <!-- Satellite: Statistical Analysis (right) -->
+            <rect x="488" y="184" width="164" height="52" rx="10" fill="#eeedfe" stroke="#534AB7" stroke-width="1"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#26215C" x="570" y="205" text-anchor="middle">Statistical Analysis</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#3C3489" x="570" y="224" text-anchor="middle">Inference, distributions</text>
+
+            <!-- Satellite: Data Visualization (bottom-left) -->
+            <rect x="96" y="270" width="164" height="52" rx="10" fill="#e1f5ee" stroke="#1D9E75" stroke-width="1"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="178" y="291" text-anchor="middle">Data Visualization</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="178" y="310" text-anchor="middle">Charts, stories, context</text>
+
+            <!-- Satellite: Database & SQL (bottom-right) -->
+            <rect x="420" y="270" width="164" height="52" rx="10" fill="#e1f5ee" stroke="#1D9E75" stroke-width="1"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="502" y="291" text-anchor="middle">Database & SQL</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="502" y="310" text-anchor="middle">Querying, structures</text>
+
+            <!-- Legend -->
+            <rect x="192" y="352" width="12" height="12" rx="3" fill="#1D9E75" fill-opacity="0.7"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#4a6280" x="210" y="362">Foundational concepts</text>
+            <rect x="340" y="352" width="12" height="12" rx="3" fill="#534AB7" fill-opacity="0.6"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#4a6280" x="358" y="362">Applied concepts</text>
+          </svg>
+          </div>
+
+          <div class="callout important">
+            <div class="callout-icon">💡</div>
+            <div class="callout-content">
+              <div class="callout-title">Key Takeaway</div>
+              <p>My best advice to anyone new to the technical world of data is the same advice I give any new aspiring analyst: <strong>focus on the concepts, not the tools.</strong> The tools change every few years; the concepts are durable.</p>
+            </div>
+          </div>
+
+          <div class="citation">
+            ULC, B. (n.d.). Bitmoji, Your Personal Emoji. Bitmoji. <a href="https://www.bitmoji.com/" target="_blank">https://www.bitmoji.com/</a>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('p1')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Previous</span><span class="page-nav-title">What is BI & Analytics?</span></span>
+          </button>
+          <button class="page-nav-btn next" onclick="showPage('p3')">
+            <span>→</span>
+            <span><span class="page-nav-direction">Next</span><span class="page-nav-title">Data Science Pillars</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 3: Pillars -->
+      <div class="page" id="page-p3">
+        <div class="page-hero">
+          <span class="page-tag">Introduction · 03</span>
+          <h1 class="page-title">Data Science Pillars</h1>
+          <p class="page-intro">Before diving into specific topics, let's understand the three skill domains industry expects — and where different roles and activities fit within them.</p>
+        </div>
+
+        <div class="content-body">
+          <blockquote>
+            <p>"An approximate answer to the right question is worth a great deal more than a precise answer to the wrong question."</p>
+            <div class="quote-attr">— John Tukey</div>
+          </blockquote>
+
+          <p>With no industry standard naming and definitions, understanding the Data Science space can be the most daunting part of entering the field. If you Google "data science three pillars" or "data science Venn diagram" you will be presented with a variety of similar visualizations. The two below give a realistic representation of the three skill areas employers are looking for in analysts. The experience levels they look for do not change the tenets themselves — just how much training you need in each area.</p>
+
+          <h2>The IMS Diagram (2014)</h2>
+
+          <p>This first diagram is from an <em>Institute of Mathematical Statistics</em> posting from 2014. I invite you to <a href="https://imstat.org/2014/10/01/ims-presidential-address-let-us-own-data-science/" target="_blank">read the article</a> — it does help to frame what BI, statistics, and data science mean in the real world.</p>
+
+          <div style="margin: 24px 0; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+          <svg width="100%" viewBox="0 0 680 360" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Data Science Simplified Diagram — based on Bin Yu, IMS 2014</title>
+            <desc>Three overlapping circles representing Computer Science, Statistics, and Domain Knowledge. Their intersections show Machine Learning, Traditional Research, and Data Engineering. The centre of all three is Data Science.</desc>
+            <!-- Circle fills -->
+            <circle cx="250" cy="155" r="130" fill="#e1f5ee" fill-opacity="0.7" stroke="#1D9E75" stroke-width="1.5"/>
+            <circle cx="430" cy="155" r="130" fill="#eeedfe" fill-opacity="0.7" stroke="#534AB7" stroke-width="1.5"/>
+            <circle cx="340" cy="278" r="130" fill="#faeeda" fill-opacity="0.7" stroke="#BA7517" stroke-width="1.5"/>
+            <!-- Circle labels -->
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="162" y="88" text-anchor="middle">Computer</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="162" y="105" text-anchor="middle">Science</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#3C3489" x="518" y="88" text-anchor="middle">Statistics</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#633806" x="340" y="346" text-anchor="middle">Domain Knowledge</text>
+            <!-- Pairwise intersections -->
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#26215C" x="340" y="116" text-anchor="middle">Machine Learning</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="232" y="258" text-anchor="middle">Data</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="232" y="272" text-anchor="middle">Engineering</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#412402" x="450" y="258" text-anchor="middle">Traditional</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#412402" x="450" y="272" text-anchor="middle">Research</text>
+            <!-- Centre label -->
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="15" fill="#0f2340" x="340" y="192" text-anchor="middle">Data Science</text>
+          </svg>
+          </div>
+          <p class="img-caption">Fig. 1 — Data Science Simplified Diagram. Based on: Yu, B. (2014). IMS Presidential Address: <em>Let Us Own Data Science.</em> Institute of Mathematical Statistics.</p>
+
+          <h2>The Geringer Diagram</h2>
+
+          <p>This second diagram by Geringer facetiously includes <em>Unicorn</em> in the intersection of all three areas, and also shows where technologies and tools fit within the Venn. Note the <em>Machine Learning</em>, <em>Traditional Research</em>, and <em>Traditional Software</em> entries — we will explore the technologies deeper in the next section, Class Scope and Alignment.</p>
+
+          <div style="margin: 24px 0; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+          <svg width="100%" viewBox="0 0 680 390" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Data Science as Convergence — based on Geringer / Armengaud et al. 2017</title>
+            <desc>Three overlapping circles for Computer Science, Math and Statistics, and Domain Expertise. Intersections label Machine Learning, Traditional Research, Traditional Software, and the centre intersection is labelled Data Science (Unicorn).</desc>
+            <!-- Circle fills -->
+            <circle cx="250" cy="162" r="138" fill="#e1f5ee" fill-opacity="0.65" stroke="#1D9E75" stroke-width="1.5"/>
+            <circle cx="430" cy="162" r="138" fill="#eeedfe" fill-opacity="0.65" stroke="#534AB7" stroke-width="1.5"/>
+            <circle cx="340" cy="292" r="138" fill="#faeeda" fill-opacity="0.65" stroke="#BA7517" stroke-width="1.5"/>
+            <!-- Circle labels -->
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="148" y="88" text-anchor="middle">Computer</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="148" y="105" text-anchor="middle">Science</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="148" y="124" text-anchor="middle">Python, SQL, R</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#3C3489" x="532" y="88" text-anchor="middle">Math &amp;</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#3C3489" x="532" y="105" text-anchor="middle">Statistics</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#534AB7" x="532" y="124" text-anchor="middle">Inference, models</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#633806" x="340" y="372" text-anchor="middle">Domain Expertise</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#854F0B" x="340" y="388" text-anchor="middle">Business, science, industry</text>
+            <!-- Pairwise intersection labels -->
+            <!-- CS ∩ Stats: Machine Learning (top) -->
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#26215C" x="340" y="118" text-anchor="middle">Machine Learning</text>
+            <!-- CS ∩ Domain: Traditional Software (bottom-left) -->
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="232" y="272" text-anchor="middle">Traditional</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="232" y="286" text-anchor="middle">Software</text>
+            <!-- Stats ∩ Domain: Traditional Research (bottom-right) -->
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#412402" x="454" y="272" text-anchor="middle">Traditional</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#412402" x="454" y="286" text-anchor="middle">Research</text>
+            <!-- Centre: Data Science / Unicorn -->
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="14" fill="#0f2340" x="340" y="198" text-anchor="middle">Data Science</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#1a3558" x="340" y="216" text-anchor="middle">🦄 "Unicorn"</text>
+          </svg>
+          </div>
+          <p class="img-caption">Fig. 2 — Data Science as Convergence. Based on: Armengaud, E. et al. (2017). Industry 4.0 as Digitalization over the Entire Product Lifecycle; adapted from Geringer.</p>
+
+          <div class="callout note">
+            <div class="callout-icon">🦄</div>
+            <div class="callout-content">
+              <div class="callout-title">The "Unicorn" Problem</div>
+              <p>The "Unicorn" label at the intersection of all three pillars reflects a real industry challenge: employers often seek professionals with deep expertise in all three domains simultaneously — a rare combination in practice.</p>
+            </div>
+          </div>
+
+          <div class="citation">
+            Yu, B. (2014, October 1). IMS Presidential Address: Let Us Own Data Science. <a href="https://imstat.org/2014/10/01/ims-presidential-address-let-us-own-data-science/" target="_blank">Institute of Mathematical Statistics</a>.<br><br>
+            Armengaud, Eric & Sams, Christoph & von Falck, Georg & List, Georg & Kreiner, Christian & Riel, Andreas. (2017). Industry 4.0 as Digitalization over the Entire Product Lifecycle: Opportunities in the Automotive Domain.
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('p2')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Previous</span><span class="page-nav-title">BI & Analytics Concepts</span></span>
+          </button>
+          <button class="page-nav-btn next" onclick="showPage('p4')">
+            <span>→</span>
+            <span><span class="page-nav-direction">Next</span><span class="page-nav-title">Learning Scope</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 4: Learning Scope -->
+      <div class="page" id="page-p4">
+        <div class="page-hero">
+          <span class="page-tag">Scope & Skills · 04</span>
+          <h1 class="page-title">Learning Scope</h1>
+          <p class="page-intro">Where BI & Analytics sits within the broader data science ecosystem — mapped across the all-time horizons framework.</p>
+        </div>
+
+        <div class="content-body">
+          <p>With a better understanding of the three pillars of data science, let's take a deeper dive into the areas and associated roles under the data science umbrella. This blog entry from <a href="https://365datascience.com/trending/data-science-vs-ml-vs-data-analytics/" target="_blank">365 DataScience.com</a> does a good job explaining the areas of data science in a matrix of technical areas across an <em>all-time horizons</em> x-axis. Although the blog entry is focused on differences between common terms you will often hear mentioned, the info diagram allows for a high-level scope of the technical classes in the program.</p>
+
+          <div class="callout tip">
+            <div class="callout-icon">🎯</div>
+            <div class="callout-content">
+              <div class="callout-title">Program Focus</div>
+              <p>The <strong>highlighted teal zone</strong> in the diagram below outlines the areas of focus required when learning Business Intelligence and Analytics. This clearly positions the program within the data science spectrum.</p>
+            </div>
+          </div>
+
+          <div style="margin: 24px 0; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+          <svg width="100%" viewBox="0 0 680 370" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Data Science Learning Scope Matrix — based on 365 DataScience, Valchanov 2021</title>
+            <desc>A matrix with technical skill areas on the vertical axis and time horizons (Past, Present, Future) on the horizontal axis. A highlighted teal box marks the Business Intelligence and Analytics zone covering the Past and Present columns.</desc>
+
+            <!-- Column header backgrounds -->
+            <rect x="148" y="52" width="154" height="34" rx="6" fill="#1D9E75" fill-opacity="0.85"/>
+            <rect x="314" y="52" width="154" height="34" rx="6" fill="#1D9E75" fill-opacity="0.85"/>
+            <rect x="480" y="52" width="154" height="34" rx="6" fill="#534AB7" fill-opacity="0.82"/>
+
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="white" x="225" y="73" text-anchor="middle">Past</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="white" x="391" y="73" text-anchor="middle">Present</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="white" x="557" y="73" text-anchor="middle">Future</text>
+
+            <!-- BI highlight zone -->
+            <rect x="148" y="52" width="320" height="284" rx="8" fill="rgba(26,140,122,0.05)" stroke="#1a8c7a" stroke-width="2" stroke-dasharray="6 3"/>
+
+            <!-- Row label backgrounds -->
+            <rect x="12" y="94" width="128" height="34" rx="6" fill="#f0ece4" stroke="#d8e4ee" stroke-width="0.5"/>
+            <rect x="12" y="136" width="128" height="34" rx="6" fill="#f0ece4" stroke="#d8e4ee" stroke-width="0.5"/>
+            <rect x="12" y="178" width="128" height="34" rx="6" fill="#f0ece4" stroke="#d8e4ee" stroke-width="0.5"/>
+            <rect x="12" y="220" width="128" height="34" rx="6" fill="#f0ece4" stroke="#d8e4ee" stroke-width="0.5"/>
+            <rect x="12" y="262" width="128" height="34" rx="6" fill="#f0ece4" stroke="#d8e4ee" stroke-width="0.5"/>
+            <rect x="12" y="304" width="128" height="34" rx="6" fill="#f0ece4" stroke="#d8e4ee" stroke-width="0.5"/>
+
+            <!-- Row labels -->
+            <text font-family="'DM Sans',sans-serif" font-size="11.5" font-weight="500" fill="#1c2b3a" x="76" y="115" text-anchor="middle">Data / SQL</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11.5" font-weight="500" fill="#1c2b3a" x="76" y="157" text-anchor="middle">Visualization</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11.5" font-weight="500" fill="#1c2b3a" x="76" y="199" text-anchor="middle">Statistics</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11.5" font-weight="500" fill="#1c2b3a" x="76" y="241" text-anchor="middle">Programming</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11.5" font-weight="500" fill="#1c2b3a" x="76" y="263" text-anchor="middle"></text>
+            <text font-family="'DM Sans',sans-serif" font-size="11.5" font-weight="500" fill="#1c2b3a" x="76" y="283" text-anchor="middle">Machine</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11.5" font-weight="500" fill="#1c2b3a" x="76" y="296" text-anchor="middle">Learning</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11.5" font-weight="500" fill="#1c2b3a" x="76" y="318" text-anchor="middle">Deep Learning</text>
+
+            <!-- Grid cells — Past column (x=148, w=154) -->
+            <!-- Row 1: Data/SQL -->
+            <rect x="152" y="98" width="146" height="26" rx="5" fill="#1D9E75" fill-opacity="0.15"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="225" y="115" text-anchor="middle">Querying &amp; aggregation</text>
+            <!-- Row 2: Visualization -->
+            <rect x="152" y="140" width="146" height="26" rx="5" fill="#1D9E75" fill-opacity="0.15"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="225" y="157" text-anchor="middle">Charts, trend analysis</text>
+            <!-- Row 3: Statistics -->
+            <rect x="152" y="182" width="146" height="26" rx="5" fill="#1D9E75" fill-opacity="0.12"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="225" y="199" text-anchor="middle">Descriptive stats</text>
+            <!-- Row 4: Programming -->
+            <rect x="152" y="224" width="146" height="26" rx="5" fill="#1D9E75" fill-opacity="0.1"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="225" y="241" text-anchor="middle">SQL, basic Python/R</text>
+            <!-- Row 5: ML -->
+            <rect x="152" y="266" width="146" height="26" rx="5" fill="#f0ece4"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#b0b8c4" x="225" y="283" text-anchor="middle">—</text>
+            <!-- Row 6: DL -->
+            <rect x="152" y="308" width="146" height="26" rx="5" fill="#f0ece4"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#b0b8c4" x="225" y="325" text-anchor="middle">—</text>
+
+            <!-- Grid cells — Present column (x=314, w=154) -->
+            <rect x="318" y="98" width="146" height="26" rx="5" fill="#1D9E75" fill-opacity="0.15"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="391" y="115" text-anchor="middle">ETL, data warehousing</text>
+            <rect x="318" y="140" width="146" height="26" rx="5" fill="#1D9E75" fill-opacity="0.15"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="391" y="157" text-anchor="middle">Dashboards, KPIs</text>
+            <rect x="318" y="182" width="146" height="26" rx="5" fill="#1D9E75" fill-opacity="0.12"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="391" y="199" text-anchor="middle">Inferential stats</text>
+            <rect x="318" y="224" width="146" height="26" rx="5" fill="#1D9E75" fill-opacity="0.1"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#085041" x="391" y="241" text-anchor="middle">Power Query, Python</text>
+            <rect x="318" y="266" width="146" height="26" rx="5" fill="#f0ece4"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#b0b8c4" x="391" y="283" text-anchor="middle">—</text>
+            <rect x="318" y="308" width="146" height="26" rx="5" fill="#f0ece4"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#b0b8c4" x="391" y="325" text-anchor="middle">—</text>
+
+            <!-- Grid cells — Future column (x=480, w=154) -->
+            <rect x="484" y="98" width="146" height="26" rx="5" fill="#eeedfe"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#534AB7" x="557" y="115" text-anchor="middle">Feature engineering</text>
+            <rect x="484" y="140" width="146" height="26" rx="5" fill="#eeedfe"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#534AB7" x="557" y="157" text-anchor="middle">Model outputs, reports</text>
+            <rect x="484" y="182" width="146" height="26" rx="5" fill="#eeedfe" fill-opacity="0.8"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#534AB7" x="557" y="199" text-anchor="middle">Probability, distributions</text>
+            <rect x="484" y="224" width="146" height="26" rx="5" fill="#eeedfe" fill-opacity="0.8"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#534AB7" x="557" y="241" text-anchor="middle">Python, R (advanced)</text>
+            <rect x="484" y="266" width="146" height="26" rx="5" fill="#eeedfe" fill-opacity="0.9"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#534AB7" x="557" y="283" text-anchor="middle">Regression, clustering</text>
+            <rect x="484" y="308" width="146" height="26" rx="5" fill="#eeedfe"/>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#534AB7" x="557" y="325" text-anchor="middle">Neural networks</text>
+
+            <!-- BI zone label -->
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#1a8c7a" font-weight="500" x="310" y="348" text-anchor="middle">← BI &amp; Analytics program focus →</text>
+          </svg>
+          </div>
+          <p class="img-caption">Fig. 3 — Data Science Scope Matrix. Based on: Valchanov, I. (2021). <em>Data Science vs Machine Learning vs Data Analytics vs Business Analytics.</em> 365 Data Science.</p>
+
+          <div class="citation">
+            Valchanov, I. (2021, October 20). Data Science vs Machine Learning vs Data Analytics vs Business Analytics. <a href="https://365datascience.com/trending/data-science-vs-ml-vs-data-analytics/" target="_blank">365 Data Science</a>.
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('p3')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Previous</span><span class="page-nav-title">Data Science Pillars</span></span>
+          </button>
+          <button class="page-nav-btn next" onclick="showPage('p5')">
+            <span>→</span>
+            <span><span class="page-nav-direction">Next</span><span class="page-nav-title">Technologies & Languages</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 5: Technologies -->
+      <div class="page" id="page-p5">
+        <div class="page-hero">
+          <span class="page-tag">Scope & Skills · 05</span>
+          <h1 class="page-title">Technologies & Languages</h1>
+          <p class="page-intro">Even though the focus is on concepts, we still need tools to learn with. Here's why these specific technologies were chosen — and how that thinking evolves year to year.</p>
+        </div>
+
+        <div class="content-body">
+          <p>Even though the importance in learning should be on concepts and not tools, we still need to use tools in our learning! I have picked the core tools we will be using in class based on current industry trends. Obviously, Canadian business demands are a priority in what I select for teaching, and I continue to revisit the tools each year.</p>
+
+          <p>Technology changes frequently and there could be minor changes as each year progresses. For example, through 2020 I had been teaching a Statistical Learning course using the <strong>R programming language</strong>. Due to the increased demand for analysts to be exposed to the modules and libraries available in Python, I am now using Python for both an Intro to Data Science and an Applied Data Science course.</p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Technology</th>
+                <th>Reason Chosen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Power Query & Power BI</strong></td>
+                <td>Beginning to lead as the go-to tools for BI</td>
+              </tr>
+              <tr>
+                <td><strong>MS SQL Server</strong></td>
+                <td>The most used RDBMS for data warehouses</td>
+              </tr>
+              <tr>
+                <td><strong>SSIS</strong></td>
+                <td>Commonly used for ETL and data pipeline automation</td>
+              </tr>
+              <tr>
+                <td><strong>Python & DS Modules</strong></td>
+                <td>More in demand than R for the past 3–4 years</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin: 24px 0; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+          <svg width="100%" viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Technologies and Languages — BI Pipeline</title>
+            <desc>A pipeline diagram showing four technology stages: MS SQL Server for data storage, Power Query and SSIS for data transformation and ETL, Power BI for reporting and visualization, and Python for analytics and data science.</desc>
+
+            <!-- Title -->
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="14" fill="#1c2b3a" x="340" y="26" text-anchor="middle">Technology Stack — The BI Pipeline</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#7a92aa" x="340" y="44" text-anchor="middle">Tools chosen to reflect current Canadian industry demand</text>
+
+            <!-- Flow arrows between stages -->
+            <defs>
+              <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="#1a8c7a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+            <line x1="166" y1="170" x2="194" y2="170" stroke="#1a8c7a" stroke-width="1.5" marker-end="url(#arr3)"/>
+            <line x1="330" y1="170" x2="358" y2="170" stroke="#1a8c7a" stroke-width="1.5" marker-end="url(#arr3)"/>
+            <line x1="494" y1="170" x2="522" y2="170" stroke="#1a8c7a" stroke-width="1.5" marker-end="url(#arr3)"/>
+
+            <!-- Stage 1: Data Storage -->
+            <rect x="24" y="100" width="142" height="140" rx="12" fill="#e1f5ee" stroke="#1D9E75" stroke-width="1.2"/>
+            <rect x="24" y="100" width="142" height="36" rx="12" fill="#1D9E75"/>
+            <rect x="24" y="124" width="142" height="12" rx="0" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="12" fill="white" x="95" y="122" text-anchor="middle">Data Storage</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="95" y="162" text-anchor="middle">MS SQL Server</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="95" y="182" text-anchor="middle">Relational database</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="95" y="198" text-anchor="middle">Data warehousing</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="95" y="214" text-anchor="middle">RDBMS standard</text>
+
+            <!-- Stage 2: ETL -->
+            <rect x="196" y="100" width="142" height="140" rx="12" fill="#eeedfe" stroke="#534AB7" stroke-width="1.2"/>
+            <rect x="196" y="100" width="142" height="36" rx="12" fill="#534AB7"/>
+            <rect x="196" y="124" width="142" height="12" rx="0" fill="#534AB7"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="12" fill="white" x="267" y="122" text-anchor="middle">ETL & Transform</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#26215C" x="267" y="162" text-anchor="middle">Power Query</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#26215C" x="267" y="180" text-anchor="middle">+ SSIS</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#3C3489" x="267" y="202" text-anchor="middle">Data shaping</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#3C3489" x="267" y="218" text-anchor="middle">Pipeline automation</text>
+
+            <!-- Stage 3: Reporting -->
+            <rect x="360" y="100" width="142" height="140" rx="12" fill="#e1f5ee" stroke="#1D9E75" stroke-width="1.2"/>
+            <rect x="360" y="100" width="142" height="36" rx="12" fill="#1D9E75"/>
+            <rect x="360" y="124" width="142" height="12" rx="0" fill="#1D9E75"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="12" fill="white" x="431" y="122" text-anchor="middle">Reporting & BI</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#085041" x="431" y="171" text-anchor="middle">Power BI</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="431" y="202" text-anchor="middle">Dashboards, KPIs</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#0F6E56" x="431" y="218" text-anchor="middle">Standard reporting</text>
+
+            <!-- Stage 4: Analytics -->
+            <rect x="524" y="100" width="142" height="140" rx="12" fill="#faeeda" stroke="#BA7517" stroke-width="1.2"/>
+            <rect x="524" y="100" width="142" height="36" rx="12" fill="#BA7517"/>
+            <rect x="524" y="124" width="142" height="12" rx="0" fill="#BA7517"/>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="12" fill="white" x="595" y="122" text-anchor="middle">Analytics & DS</text>
+            <text font-family="'DM Sans',sans-serif" font-weight="500" font-size="13" fill="#412402" x="595" y="162" text-anchor="middle">Python</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#633806" x="595" y="182" text-anchor="middle">ML libraries</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#633806" x="595" y="198" text-anchor="middle">Statistical modeling</text>
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#633806" x="595" y="214" text-anchor="middle">Predictive analytics</text>
+
+            <!-- Stage labels below -->
+            <text font-family="'DM Sans',sans-serif" font-size="10" fill="#7a92aa" x="95" y="256" text-anchor="middle">① Store</text>
+            <text font-family="'DM Sans',sans-serif" font-size="10" fill="#7a92aa" x="267" y="256" text-anchor="middle">② Transform</text>
+            <text font-family="'DM Sans',sans-serif" font-size="10" fill="#7a92aa" x="431" y="256" text-anchor="middle">③ Report</text>
+            <text font-family="'DM Sans',sans-serif" font-size="10" fill="#7a92aa" x="595" y="256" text-anchor="middle">④ Predict</text>
+
+            <!-- Footer -->
+            <text font-family="'DM Sans',sans-serif" font-size="11" fill="#7a92aa" x="340" y="284" text-anchor="middle">Reviewed annually — technology changes; concepts do not</text>
+          </svg>
+          </div>
+
+          <div class="callout note">
+            <div class="callout-icon">🔄</div>
+            <div class="callout-content">
+              <div class="callout-title">Tools Evolve — Concepts Don't</div>
+              <p>This selection reflects current trends but is reviewed annually. The tools you learn in this program will change throughout your career; the analytical thinking you develop will not.</p>
+            </div>
+          </div>
+
+          <div class="citation">
+            ULC, B. (n.d.). Bitmoji, Your Personal Emoji. Bitmoji. <a href="https://www.bitmoji.com/" target="_blank">https://www.bitmoji.com/</a>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('p4')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Previous</span><span class="page-nav-title">Learning Scope</span></span>
+          </button>
+          <button class="page-nav-btn next" onclick="showPage('p6')">
+            <span>→</span>
+            <span><span class="page-nav-direction">Next</span><span class="page-nav-title">Analytical Skills</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 6: Analytical Skills -->
+      <div class="page" id="page-p6">
+        <div class="page-hero">
+          <span class="page-tag">Scope & Skills · 06</span>
+          <h1 class="page-title">Analytical Skills</h1>
+          <p class="page-intro">The skills that make an analyst truly valuable — often overlooked in career preparation, project planning, and even job postings.</p>
+        </div>
+
+        <div class="content-body">
+          <p>Although most new learners are excited about the tools we use in Business Intelligence and Analytics, it is important to understand: it's the <strong>skills</strong> that make the analyst valuable. This is often overlooked in career preparation, project planning, and even in job postings.</p>
+
+          <p>I don't know how many times I have been told, "we need another Data Stage ETL person," or "we need another Siebel report author." Most often in these cases, what was needed was somebody who could <em>transpose data into information</em>. The chosen tool didn't matter, and mastering a tool does not ensure a person can understand the needs of the business and provide the information needed to guide decision making.</p>
+
+          <div class="callout tip">
+            <div class="callout-icon">📌</div>
+            <div class="callout-content">
+              <div class="callout-title">Note on obsolete tools</div>
+              <p>Yes — I did pick two technologies in the example above (Data Stage ETL and Siebel) that are now basically obsolete. That is intentional, to illustrate how fast tools change in this industry. The concepts and skills, however, do not.</p>
+            </div>
+          </div>
+
+          <p>I came across a great post by Chris Dutton on LinkedIn that I agree with completely. I know my students have heard this from me often in class, but it helps that the message is getting out there in industry circles as well.</p>
+
+          <div style="margin: 28px 0; border-radius: 10px; border: 1px solid var(--border); background: white; overflow: hidden;">
+            <div style="background: #0a66c2; padding: 12px 20px; display: flex; align-items: center; gap: 10px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span style="font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600; color:white; letter-spacing:0.02em;">LinkedIn — Chris Dutton</span>
+            </div>
+            <div style="padding: 22px 24px;">
+              <p style="font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:1rem; color:var(--navy-mid); line-height:1.75; margin:0 0 16px;">
+                "Data skills are important. But analytical skills — the ability to ask the right questions, think critically, and translate data into decisions — are what truly differentiate great analysts from average ones. Tools change. Thinking doesn't."
+              </p>
+              <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+                <div>
+                  <div style="font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600; color:var(--text);">Chris Dutton</div>
+                  <div style="font-family:'DM Sans',sans-serif; font-size:12px; color:var(--text-muted);">Maven Analytics — LinkedIn post on analytical thinking</div>
+                </div>
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:6792071729733758976/" target="_blank"
+                   style="display:inline-flex; align-items:center; gap:7px; padding:8px 16px; background:#0a66c2; color:white; border-radius:6px; text-decoration:none; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; white-space:nowrap;">
+                  View post on LinkedIn →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('p5')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Previous</span><span class="page-nav-title">Technologies & Languages</span></span>
+          </button>
+          <button class="page-nav-btn next" onclick="showPage('p7')">
+            <span>→</span>
+            <span><span class="page-nav-direction">Next</span><span class="page-nav-title">Mathematics in Analytics</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 7: Mathematics -->
+      <div class="page" id="page-p7">
+        <div class="page-hero">
+          <span class="page-tag">Scope & Skills · 07</span>
+          <h1 class="page-title">Mathematics in Analytics</h1>
+          <p class="page-intro">How strong do your math skills really need to be? The answer depends on the role — and a music analogy explains it better than most textbooks.</p>
+        </div>
+
+        <div class="content-body">
+          <p>I am often asked: <em>"How strong do my mathematics skills need to be to write code required for machine learning?"</em></p>
+
+          <p>A simple answer is an understanding of <strong>Statistics, Linear Algebra, and Calculus</strong>. The more you understand and can apply about each of those disciplines, the more desirable your skills will be in the market. Because of available tools and varying roles, there is a spectrum of skills required depending on the role.</p>
+
+          <div class="callout note">
+            <div class="callout-icon">📘</div>
+            <div class="callout-content">
+              <div class="callout-title">Free Resource</div>
+              <p>The quote below is from <a href="https://mml-book.com" target="_blank">Mathematics for Machine Learning</a>, available free from Cambridge University Press. I recommend downloading the PDF and at least scanning it to understand which mathematical skills are utilized in machine learning.</p>
+            </div>
+          </div>
+
+          <h2>Three Types of Interaction with Machine Learning</h2>
+
+          <p>The analogy to music from the book provides a helpful explanation for the spectrum of mathematical depth different roles require:</p>
+
+          <blockquote>
+            <p><strong>Astute Listener</strong> — The democratization of machine learning by open-source software, online tutorials, and cloud-based tools allows users to not worry about the specifics of pipelines. Users focus on extracting insights from off-the-shelf tools. This is like listening to music: choosing between different types, benefiting from it. More experienced users are like music critics, asking important questions about ethics, fairness, and privacy.</p>
+          </blockquote>
+
+          <blockquote>
+            <p><strong>Experienced Artist</strong> — Skilled practitioners can plug and play different tools and libraries into an analysis pipeline. The stereotypical practitioner would be a data scientist or engineer who understands machine learning interfaces and their use cases. This is like a virtuoso: highly skilled practitioners bring existing instruments to life. Using mathematics as a primer, practitioners extend and generalize existing algorithms.</p>
+          </blockquote>
+
+          <blockquote>
+            <p><strong>Fledgling Composer</strong> — Developers of machine learning need to develop new methods and extend existing algorithms. They are often researchers who need to understand the mathematical basis of machine learning and uncover relationships between different tasks. This is like composing music: within the rules of musical theory, creating new and amazing pieces.</p>
+          </blockquote>
+
+          <p>Most BI & Analytics professionals operate at the Astute Listener or Experienced Artist level. The Fledgling Composer level is the domain of ML researchers and engineers.</p>
+
+          <div class="citation">
+            2021 M. P. Deisenroth, A. A. Faisal, C. S. Ong. Published by Cambridge University Press (2020). <a href="https://mml-book.com" target="_blank">mml-book.com</a>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('p6')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Previous</span><span class="page-nav-title">Analytical Skills</span></span>
+          </button>
+          <button class="page-nav-btn next" onclick="showPage('p8')">
+            <span>→</span>
+            <span><span class="page-nav-direction">Next</span><span class="page-nav-title">Prep & Links</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 8: Prep & Links -->
+      <div class="page" id="page-p8">
+        <div class="page-hero">
+          <span class="page-tag">Resources · 08</span>
+          <h1 class="page-title">Prep & Links</h1>
+          <p class="page-intro">What to brush up on before starting the program — and a curated set of free resources to help you get there.</p>
+        </div>
+
+        <div class="content-body">
+          <p>Many students ask what they should brush up on before starting a Business Intelligence and Analytics program. In a nutshell: make sure you are comfortable with <strong>advanced worksheet operations in Excel</strong> — pivot tables, lookups (i.e. VLOOKUPs), built-in functions, and data tables. Reviewing the statistical package in Excel as well as reviewing inferential statistics is also a good idea for when you begin working with statistical learning models.</p>
+
+          <p>I would also recommend exploring an open source database like <strong>SQLite</strong> (see link below for free resources).</p>
+
+          <h2>Core Resources</h2>
+
+          <a class="link-card" href="https://www.w3schools.com/sql/default.asp" target="_blank">
+            <div class="link-card-icon">🗄️</div>
+            <div>
+              <div class="link-card-title">W3 Schools SQL</div>
+              <div class="link-card-desc">An excellent introduction to base SQL skills — interactive, browser-based, and free.</div>
+            </div>
+          </a>
+
+          <a class="link-card" href="https://sqlitebrowser.org/" target="_blank">
+            <div class="link-card-icon">💾</div>
+            <div>
+              <div class="link-card-title">SQLite and DB Browser for SQLite</div>
+              <div class="link-card-desc">My favourite database! Great for intro courses — students can keep their databases on a USB drive on their keychain.</div>
+            </div>
+          </a>
+
+          <a class="link-card" href="https://www.openintro.org/" target="_blank">
+            <div class="link-card-icon">📊</div>
+            <div>
+              <div class="link-card-title">OpenIntro Statistics</div>
+              <div class="link-card-desc">Available free as a PDF, or ~$20 CDN on Amazon. Labs contain both R and Python code samples. A model for the future of textbooks.</div>
+            </div>
+          </a>
+
+          <a class="link-card" href="https://mml-book.github.io/" target="_blank">
+            <div class="link-card-icon">📐</div>
+            <div>
+              <div class="link-card-title">Mathematics for Machine Learning</div>
+              <div class="link-card-desc">Working with code in SQL, Python, or R is ultimately working with mathematics. A great free resource from Cambridge University Press.</div>
+            </div>
+          </a>
+
+          <h2>LinkedIn Learning Resources</h2>
+
+          <p>Many public libraries and schools in Canada have an agreement with <a href="https://www.linkedin.com/learning/" target="_blank">LinkedIn Learning</a>. With technology changing as fast as it does, traditional textbooks cannot keep up — videos help bridge the gap. You can often access LinkedIn Learning free with your student ID or public library card.</p>
+
+          <div class="callout tip">
+            <div class="callout-icon">🏛️</div>
+            <div class="callout-content">
+              <div class="callout-title">Halifax Public Libraries</div>
+              <p>I access LinkedIn Learning through the <a href="https://www.halifaxpubliclibraries.ca/blogs/post/how-to-learn-with-linkedin-learning/" target="_blank">Halifax Public Libraries</a>. If you live outside the HRM, you can still get a Halifax Library card free of charge as a resident of Nova Scotia.</p>
+            </div>
+          </div>
+
+          <a class="link-card" href="https://www.linkedin.com/learning/statistics-foundations-the-basics/" target="_blank">
+            <div class="link-card-icon">📈</div>
+            <div>
+              <div class="link-card-title">Statistics Foundations: The Basics</div>
+              <div class="link-card-desc">Eddie is a great instructor. An excellent first statistics course — look up his 3-part series on inferential statistics if you enjoy it.</div>
+            </div>
+          </a>
+
+          <a class="link-card" href="https://www.linkedin.com/learning/excel-statistics-essential-training-1-2/" target="_blank">
+            <div class="link-card-icon">🔢</div>
+            <div>
+              <div class="link-card-title">Excel Statistics Essential Training: 1 & 2</div>
+              <div class="link-card-desc">Joseph Schmuller is a renowned author — dry as an instructor, but extraordinary at extending Excel into inferential statistics.</div>
+            </div>
+          </a>
+
+          <a class="link-card" href="https://www.linkedin.com/learning/learning-sql-programming-8382385/" target="_blank">
+            <div class="link-card-icon">💻</div>
+            <div>
+              <div class="link-card-title">Learning SQL Programming</div>
+              <div class="link-card-desc">If it were my choice, I would use SQLite Browser and this course to teach an "Intro to Databases" course.</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('p7')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Previous</span><span class="page-nav-title">Mathematics in Analytics</span></span>
+          </button>
+          <button class="page-nav-btn next" onclick="showPage('p9')">
+            <span>→</span>
+            <span><span class="page-nav-direction">Next</span><span class="page-nav-title">Becoming a BI Analyst</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 9: Becoming a BI Analyst -->
+      <div class="page" id="page-p9">
+        <div class="page-hero">
+          <span class="page-tag">Resources · 09</span>
+          <h1 class="page-title">Becoming a Business Intelligence Analyst</h1>
+          <p class="page-intro">Why BI roles almost always require 2–5 years of experience — and what that means for how you plan your career path.</p>
+        </div>
+
+        <div class="content-body">
+          <blockquote>
+            <p>I am often asked why Business Intelligence listings on job sites require a minimum of 2–5 years of experience.</p>
+          </blockquote>
+
+          <p>The reason why you see an experience requirement for Business Intelligence Analyst roles is that <strong>the role itself is not an entry-level position</strong>. As you may have noted in the Learning Scope and Alignment section, there is an expectation of the analyst to possess a broad skill set.</p>
+
+          <p>This desired skill set spans:</p>
+
+          <div class="callout note">
+            <div class="callout-icon">🧠</div>
+            <div class="callout-content">
+              <div class="callout-title">Business & Domain Knowledge</div>
+              <p>General business acumen as well as domain-specific knowledge depending on the organization — finance, healthcare, retail, logistics, etc.</p>
+            </div>
+          </div>
+
+          <div class="callout note">
+            <div class="callout-icon">💻</div>
+            <div class="callout-content">
+              <div class="callout-title">Technical Proficiency</div>
+              <p>A solid understanding of information technology and the ability to program in languages such as SQL, Python, R, and others.</p>
+            </div>
+          </div>
+
+          <div class="callout note">
+            <div class="callout-icon">📐</div>
+            <div class="callout-content">
+              <div class="callout-title">Quantitative Skills</div>
+              <p>Strong statistical, mathematical, and problem-solving skills — applied to real datasets and business questions.</p>
+            </div>
+          </div>
+
+          <p>This breadth of requirement is why the program is structured to build skills across all three of these domains simultaneously. Entry-level positions that lead toward a BI Analyst role include data analyst, report author, and ETL developer roles.</p>
+
+          <a class="link-card" href="https://www.discoverdatascience.org/career-information/business-intelligence-analyst/" target="_blank">
+            <div class="link-card-icon">🎯</div>
+            <div>
+              <div class="link-card-title">How to Become a Business Intelligence Analyst — A Complete Career Guide</div>
+              <div class="link-card-desc">Discover Data Science has a good guide on career pathways, expected salaries, and the experience typically required for BI Analyst roles.</div>
+            </div>
+          </a>
+
+          <div class="citation">
+            Become a business intelligence analyst: Career and salary information. DiscoverDataScience.org. (2023, February 10). <a href="https://www.discoverdatascience.org/career-information/business-intelligence-analyst/" target="_blank">discoverdatascience.org</a>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <button class="page-nav-btn" onclick="showPage('p8')">
+            <span>←</span>
+            <span><span class="page-nav-direction">Previous</span><span class="page-nav-title">Prep & Links</span></span>
+          </button>
+          <button class="page-nav-btn" onclick="showPage('home')" style="margin-left:auto;">
+            <span>↑</span>
+            <span><span class="page-nav-direction">Back to</span><span class="page-nav-title">Overview</span></span>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- end content-main -->
+
+    <!-- RIGHT TOC (shown contextually) -->
+    <aside class="content-toc" id="rightToc">
+      <div class="toc-label">On this page</div>
+      <div id="tocLinks"></div>
+    </aside>
+
+  </div><!-- end content-wrap -->
+</div><!-- end main -->
+
+<button class="menu-toggle" onclick="toggleSidebar()" title="Toggle menu">☰</button>
+
+<script>
+const pages = {
+  home: { title: 'Overview', toc: [] },
+  p1: { title: 'What is BI & Analytics?', toc: [] },
+  p2: { title: 'BI & Analytics Concepts', toc: [] },
+  p3: { title: 'Data Science Pillars', toc: ['The IMS Diagram (2014)', 'The Geringer Diagram'] },
+  p4: { title: 'Learning Scope', toc: [] },
+  p5: { title: 'Technologies & Languages', toc: [] },
+  p6: { title: 'Analytical Skills', toc: [] },
+  p7: { title: 'Mathematics in Analytics', toc: ['Three Types of Interaction'] },
+  p8: { title: 'Prep & Links', toc: ['Core Resources', 'LinkedIn Learning Resources'] },
+  p9: { title: 'Becoming a BI Analyst', toc: [] },
+};
+
+function showPage(id) {
+  // hide all
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelector(`[data-page="${id}"]`).classList.add('active');
+
+  const meta = pages[id];
+  document.getElementById('breadcrumb').textContent = meta.title;
+
+  // toc
+  const toc = document.getElementById('tocLinks');
+  toc.innerHTML = '';
+  meta.toc.forEach(t => {
+    const a = document.createElement('a');
+    a.className = 'toc-link';
+    a.textContent = t;
+    a.href = '#';
+    toc.appendChild(a);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // close mobile sidebar
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+function filterNav(val) {
+  const items = document.querySelectorAll('.nav-item');
+  items.forEach(item => {
+    const match = item.textContent.toLowerCase().includes(val.toLowerCase());
+    item.style.display = match ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
